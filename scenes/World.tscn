@@ -1,5 +1,17 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
 
-[node name="World" type="Node"]
+[sub_resource type="Curve2D" id=1]
+
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array(  )
+}
+_sections_unfolded = [ "Resource" ]
+
+[node name="World" type="Node" index="0"]
+
+[node name="Path_Enemy" type="Path2D" parent="." index="0"]
+
+curve = SubResource( 1 )
 
 
