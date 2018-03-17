@@ -8,14 +8,12 @@
 
 script/source = "extends Node
 
-# class member variables go here, for example:
-# var a = 2
 const ENEMY_PATH = \"res://instances/Enemy.tscn\"
 const VICTORY_PATH = \"res://instances/Victory.tscn\"
 var spawn_delay = 1
 var spawn_count = spawn_delay
 var victory = false
-var wave_max = 2
+var wave_max = 10
 var wave_current = 0
 var enemy_spawned = 0
 var enemy_max = 0
@@ -23,42 +21,50 @@ var enemy_dead = 0
 var wave_initialize = true
 
 
-
-func _ready():
-
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
+#func _ready():
+#	pass
 
 func _process(delta):
+	#counter updates
 	spawn_count -= delta
+	#check if end of current wave
 	if enemy_dead == enemy_max:
 		if wave_current < wave_max:
 			wave_current += 1
 			wave_initialize = true
 	
+	#wave initialization
 	if wave_initialize == true:
 		wave_initialize = false
-		wave_current += 1
 		enemy_dead = 0
+		enemy_spawned = 0
 		
 		if wave_current == 1:
 			enemy_max = 2
 		elif wave_current == 2:
-			enemy_max = 2
+			enemy_max = 5
 		elif wave_current == 3:
-			enemy_max = 2
+			enemy_max = 10
 		elif wave_current == 4:
-			enemy_max = 2
+			enemy_max = 20
 		elif wave_current == 5:
-			enemy_max = 2
+			enemy_max = 30
+		elif wave_current == 6:
+			enemy_max = 40
+		elif wave_current == 7:
+			enemy_max = 60
+		elif wave_current == 8:
+			enemy_max = 80
+		elif wave_current == 9:
+			enemy_max = 100
 		else:
 			wave_current = wave_max
 			enemy_dead = enemy_max
-		
-		
-		
+			
+		print(\"current wave:\")
+		print(wave_current)
 	
+	#enemy spawning
 	if spawn_count < 0: #spawn an enemy
 		spawn_count = spawn_delay
 		if enemy_spawned < enemy_max:
@@ -67,7 +73,7 @@ func _process(delta):
 			get_node(\"Path_Enemy\").add_child(enemy_instance)
 			enemy_spawned += 1
 
-	
+	#check for victory
 	if get_node(\"Base\").game_over == false:
 		#check if victory
 		if wave_current == wave_max:
@@ -77,9 +83,8 @@ func _process(delta):
 					var victory_instance = victory_preload.instance()
 					get_tree().get_root().get_node(\"World\").add_child(victory_instance)
 					victory = true
-				
-		
-	
+					print(\"VICTORY\")
+
 "
 
 [sub_resource type="StreamTexture" id=2]
@@ -91,7 +96,7 @@ load_path = "res://.import/level1_bkgd.png-9b338efb9793ca0901763cbe6296c1a6.stex
 
 bake_interval = 5.0
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -253.972, 388.282, 0, 0, 17.7547, -34.1662, -17.9395, 390.782, 0, 0, 16.7103, -37.4995, -26.2946, 310.783, 0, 0, -8.35513, -45.8327, 7.12593, 248.284, 0, 0, 2.74142, -58.6143, -18.9839, 146.618, 0, 0, 90.8744, -6.31132, 115.743, 91.6193, 0, 0, 7.39482, 56.7033, 229.581, 119.952, 0, 0, -91.709, -9.46712, 183.628, 194.951, 0, 0, -32.2445, 42.6256, 81.2777, 200.784, 0, 0, 26.9182, 38.2113, 87.5441, 381.615, 0, 0, 22.1093, -18.5017, 198.25, 404.115, 0, 0, 15.6659, -38.5048, 194.072, 275.776, 0, 0, 19.8434, -5.85943, 313.133, 226.617, 0, 0, 45.6654, -49.3888, 322.532, 134.952, 0, 0, 81.6365, -0.948483, 433.238, 95.7859, 0, 0, -32.4156, 47.6039, 519.922, 145.785, 0, 0, -12.6441, -4.57078, 431.149, 186.618, 0, 0, -56.5479, 25.0019, 406.083, 289.116, 0, 0, -30.6935, 57.7037, 299.556, 315.783, 0, 0, 46.654, 28.238, 282.845, 390.782, 0, 0, 24.8726, -4.35244, 580.497, 398.282, 0, 0, 1.83348, -38.0605, 609.74, 353.282, 0, 0, -77.3475, 14.7329, 578.408, 304.95, 0, 0, -4.91095, -57.7037, 503.212, 282.45, 0, 0, 0, 0, 520.967, 213.284, 0, 0, 0, 0, 610.784, 205.784, 0, 0, 0, 0, 721.49, 204.118 )
+"points": PoolVector2Array( 0, 0, 0, 0, -126.185, 236.534, 0, 0, 23.9163, 2.25625, -26.7386, 238.375, 0, 0, -13.5375, -29.7825, -5.25318, 218.731, 0, 0, 10.3788, -33.3925, -3.41157, 169.008, 0, 0, -18.9525, -44.2225, -4.63932, 115.601, 0, 0, 32.9413, -10.3788, 19.9155, 60.3532, 0, 0, 33.3925, 4.5125, 80.0746, 54.8284, 0, 0, -4.06125, 32.49, 109.54, 84.2941, 0, 0, -53.6988, -12.1838, 77.6192, 117.443, 0, 0, 0, 0, 32.8067, 163.483, 0, 0, 7.22001, 42.8688, 37.1038, 207.068, 0, 0, 35.1975, 7.22001, 70.2527, 244.514, 0, 0, 0, 0, 102.788, 221.187, 0, 0, -10.83, -35.1975, 96.0352, 188.652, 0, 0, 0, 0, 115.065, 146.295, 0, 0, 23.9163, -4.96375, 137.164, 140.156, 0, 0, -9.02501, -58.2113, 154.353, 114.988, 0, 0, 79.4201, 4.5125, 203.462, 61.5809, 0, 0, -35.1975, -1.805, 231.38, 111.41, 0, 0, 4.06125, 59.1138, 202.848, 137.087, 0, 0, -30.2338, -1.805, 163.561, 186.196, 0, 0, -2.25625, 28.4288, 134.709, 219.959, 0, 0, 0, 0, 166.016, 243.9, 0, 0, 42.4175, -1.35375, 261.166, 242.058, 0, 0, -2.7075, -26.6238, 292.473, 210.751, 0, 0, -18.05, -1.805, 262.394, 184.969, 0, 0, -7.22001, -38.3563, 244.592, 163.483, 0, 0, 0, 0, 273.443, 123.582, 0, 0, 0, 0, 331.147, 125.423 )
 }
 _sections_unfolded = [ "Resource" ]
 
@@ -122,8 +127,8 @@ texture = ExtResource( 3 )
 
 [node name="Path_Enemy" type="Path2D" parent="." index="2"]
 
-position = Vector2( 98.5886, 2.27174 )
-scale = Vector2( 0.478748, 0.597328 )
+position = Vector2( 98.4207, -0.108512 )
 curve = SubResource( 3 )
+_sections_unfolded = [ "Transform" ]
 
 
