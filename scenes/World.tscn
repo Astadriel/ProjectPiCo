@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://sprites/level1_bkgd.png" type="Texture" id=1]
-[ext_resource path="res://instances/Base.tscn" type="PackedScene" id=2]
+[ext_resource path="res://instances/Tower.tscn" type="PackedScene" id=2]
+[ext_resource path="res://instances/Base.tscn" type="PackedScene" id=3]
 
 [sub_resource type="GDScript" id=1]
 
@@ -10,8 +11,18 @@ script/source = "extends Node
 # class member variables go here, for example:
 # var a = 2
 const ENEMY_PATH = \"res://instances/Enemy.tscn\"
-var spawn_delay = 3
+const VICTORY_PATH = \"res://instances/Victory.tscn\"
+var spawn_delay = 1
 var spawn_count = spawn_delay
+var victory = false
+var wave_max = 2
+var wave_current = 0
+var enemy_spawned = 0
+var enemy_max = 0
+var enemy_dead = 0
+var wave_initialize = true
+
+
 
 func _ready():
 
@@ -21,43 +32,85 @@ func _ready():
 
 func _process(delta):
 	spawn_count -= delta
+	if enemy_dead == enemy_max:
+		if wave_current < wave_max:
+			wave_current += 1
+			wave_initialize = true
+	
+	if wave_initialize == true:
+		wave_initialize = false
+		wave_current += 1
+		enemy_dead = 0
+		
+		if wave_current == 1:
+			enemy_max = 2
+		elif wave_current == 2:
+			enemy_max = 2
+		elif wave_current == 3:
+			enemy_max = 2
+		elif wave_current == 4:
+			enemy_max = 2
+		elif wave_current == 5:
+			enemy_max = 2
+		else:
+			wave_current = wave_max
+			enemy_dead = enemy_max
+		
+		
+		
 	
 	if spawn_count < 0: #spawn an enemy
-		var enemy_preload = preload(ENEMY_PATH)
-		var enemy_instance = enemy_preload.instance()
-		get_node(\"Path_Enemy\").add_child(enemy_instance)
 		spawn_count = spawn_delay
+		if enemy_spawned < enemy_max:
+			var enemy_preload = preload(ENEMY_PATH)
+			var enemy_instance = enemy_preload.instance()
+			get_node(\"Path_Enemy\").add_child(enemy_instance)
+			enemy_spawned += 1
+
 	
-	# Called every frame. Delta is time since last frame.
-	# Update game logic here.
-	pass
+	if get_node(\"Base\").game_over == false:
+		#check if victory
+		if wave_current == wave_max:
+			if enemy_dead == enemy_max:
+				if victory == false:
+					var victory_preload = preload(VICTORY_PATH)
+					var victory_instance = victory_preload.instance()
+					get_tree().get_root().get_node(\"World\").add_child(victory_instance)
+					victory = true
+				
+		
+	
 "
 
 [sub_resource type="Curve2D" id=2]
 
 bake_interval = 5.0
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -135.947, 433.053, 0, 0, 0, 0, -38.9559, 435.509, 0, 0, 0, 0, -37.7282, 332.379, 0, 0, 0, 0, -10.7179, 248.892, 0, 0, -1.43615, -75.2807, -32.8172, 113.841, 0, 0, 2.69996, -3.63943, 70.3128, 27.8996, 0, 0, 0.17234, 1.76048, 232.374, 48.7711, 0, 0, -0.846878, 0.532738, 197.998, 169.09, 0, 0, -62.5319, 35.1257, 87.5011, 177.684, 0, 0, 77.049, 54.8777, 99.7785, 436.736, 0, 0, -0.867348, -1.76048, 218.869, 436.736, 0, 0, 0, 0, 206.592, 270.992, 0, 0, 0, 0, 336.732, 204.694, 0, 0, 0, 0, 346.554, 80.6924, 0, 0, 0, 0, 464.417, 31.5828, 0, 0, 0, 0, 558.953, 97.8807, 0, 0, 0, 0, 463.189, 160.495, 0, 0, 0, 0, 434.951, 293.091, 0, 0, 0, 0, 309.722, 340.973, 0, 0, 0, 0, 306.039, 439.192, 0, 0, 0, 0, 545.448, 451.469, 0, 0, 0, 0, 658.399, 415.865, 0, 0, 0, 0, 631.389, 321.329, 0, 0, 0, 0, 549.131, 290.636, 0, 0, 0, 0, 563.864, 202.238, 0, 0, 0, 0, 665.766, 182.595, 0, 0, 0, 0, 725.925, 186.278 )
+"points": PoolVector2Array( 0, 0, 0, 0, -135.947, 433.053, 0, 0, 0, 0, -38.9559, 435.509, 0, 0, 0, 0, -37.7282, 332.379, 0, 0, 0, 0, -10.7179, 248.892, 0, 0, -1.43615, -75.2807, -32.8172, 113.841, 0, 0, 61.6314, -17.1445, 70.3128, 27.8996, 0, 0, 34.549, 50.87, 232.374, 48.7711, 0, 0, -0.846878, 0.532738, 197.998, 169.09, 0, 0, -62.5319, 35.1257, 87.5011, 177.684, 0, 0, 77.049, 54.8777, 99.7785, 436.736, 0, 0, -0.867348, -1.76048, 218.869, 436.736, 0, 0, 0, 0, 206.592, 270.992, 0, 0, 0, 0, 336.732, 204.694, 0, 0, 54.0205, -55.2482, 346.554, 80.6924, 0, 0, 92.0804, 4.91095, 464.417, 31.5828, 0, 0, -28.238, 78.5752, 558.953, 97.8807, 0, 0, -14.7329, 127.685, 463.189, 160.495, 0, 0, -42.9708, 41.7431, 434.951, 293.091, 0, 0, -30.6935, 57.7037, 309.722, 340.973, 0, 0, 46.654, 28.238, 306.039, 439.192, 0, 0, 89.6249, 7.36643, 545.448, 451.469, 0, 0, 12.2774, -56.4759, 658.399, 415.865, 0, 0, -77.3475, 14.7329, 631.389, 321.329, 0, 0, -4.91095, -57.7037, 549.131, 290.636, 0, 0, 0, 0, 563.864, 202.238, 0, 0, 0, 0, 665.766, 182.595, 0, 0, 0, 0, 725.925, 186.278 )
 }
 _sections_unfolded = [ "Resource" ]
 
-[node name="World" type="Node"]
+[node name="World" type="Node" index="0"]
 
 script = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
-position = Vector2( 514.246, 297.728 )
+position = Vector2( 514.246, 296.221 )
 scale = Vector2( 2.3, 2.27167 )
 texture = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="Tower" parent="Sprite" index="0" instance=ExtResource( 2 )]
+
+position = Vector2( 75.0689, -73.7331 )
 
 [node name="Path_Enemy" type="Path2D" parent="." index="1"]
 
 position = Vector2( 184.428, 50.7663 )
 curve = SubResource( 2 )
 
-[node name="Base" parent="." index="2" instance=ExtResource( 2 )]
+[node name="Base" parent="." index="2" instance=ExtResource( 3 )]
 
 position = Vector2( 913.437, 236.953 )
 
