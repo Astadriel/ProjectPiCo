@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://instances/Tower.tscn" type="PackedScene" id=1]
 [ext_resource path="res://instances/Base.tscn" type="PackedScene" id=2]
 [ext_resource path="res://sprites/village.png" type="Texture" id=3]
-[ext_resource path="res://instances/Slot.tscn" type="PackedScene" id=4]
 
 [sub_resource type="GDScript" id=1]
 
@@ -126,16 +125,10 @@ position = Vector2( 432.378, 123.611 )
 
 texture = ExtResource( 3 )
 
-<<<<<<< HEAD
-[node name="Slot" parent="." index="3" instance=ExtResource( 4 )]
-
-position = Vector2( 38, 38.5 )
-=======
 [node name="Path_Enemy" type="Path2D" parent="." index="2"]
 
 position = Vector2( 98.4207, -0.108512 )
 curve = SubResource( 3 )
 _sections_unfolded = [ "Transform" ]
->>>>>>> 90f0b2176d89fc9b042ec723cc4bfacc8a3a34a5
 
 
