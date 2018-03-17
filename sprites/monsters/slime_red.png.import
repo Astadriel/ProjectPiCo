@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/level1_bkgd.png-9b338efb9793ca0901763cbe6296c1a6.stex"
+path="res://.import/slime_red.png-c2f20a826836f7e00cadb508bbac2de4.stex"
 
 [deps]
 
-source_file="res://sprites/level1_bkgd.png"
-source_md5="597015ecf899f5e748f38a4daafb4b10"
+source_file="res://sprites/monsters/slime_red.png"
+source_md5="8cd86cf8f9b9b224577e58ae8b953fbf"
 
-dest_files=[ "res://.import/level1_bkgd.png-9b338efb9793ca0901763cbe6296c1a6.stex" ]
-dest_md5="f05b26ff6edaef43191740d1534926b1"
+dest_files=[ "res://.import/slime_red.png-c2f20a826836f7e00cadb508bbac2de4.stex" ]
+dest_md5="568195d53b0a7c869feb866ff9f789ed"
 
 [params]
 

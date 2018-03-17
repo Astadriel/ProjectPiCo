@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://sprites/monsters/slime_blue.png" type="Texture" id=1]
+[ext_resource path="res://sprites/monsters/slime_red.png" type="Texture" id=2]
 
 [sub_resource type="GDScript" id=1]
 
@@ -9,9 +10,12 @@ script/source = "extends PathFollow2D
 var hp = 100
 var speed = 50
 var damage = 1
-var type = 0
+var type = \"slime\"
+var color = \"blue\"
 var ini = true
+var ressource = 5
 var degen = 4 #for debug purposes
+
 # class member variables go here, for example:
 # var a = 2
 # var b = \"textvar\"
@@ -22,6 +26,15 @@ func _ready():
 func _process(delta):
 	hp -= degen*delta #for debug purposes
 	if ini == true:
+		get_node(\"Sp_slime_blue\").visible = false
+		if type == \"slime\":
+			if color == \"blue\":
+				get_node(\"Sp_slime_blue\").visible = true
+			elif color == \"red\":
+				get_node(\"Sp_slime_red\").visible = true
+			else:
+				print(\"no corresponding sprite\")
+		
 		ini = false
 	# Called every frame. Delta is time since last frame.
 	# movement along the path
@@ -32,6 +45,8 @@ func _process(delta):
 		get_tree().get_root().get_node(\"World\").enemy_dead += 1
 		print(\"Enemy killed\")
 		print(get_tree().get_root().get_node(\"World\").enemy_dead )
+		#add ressource
+		get_tree().get_root().get_node(\"World\").ressource += ressource
 		queue_free()
 	pass
 
@@ -74,11 +89,10 @@ func _on_Area2D_area_entered(other):
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[node name="Enemy" type="PathFollow2D" index="0" groups=[
+[node name="Enemy" type="PathFollow2D" groups=[
 "enemy",
 ]]
 
-scale = Vector2( 0.3, 0.3 )
 offset = 0.0
 h_offset = 0.0
 v_offset = 0.0
@@ -89,11 +103,19 @@ lookahead = 4.0
 script = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
+[node name="Sp_slime_blue" type="Sprite" parent="." index="0"]
 
+position = Vector2( -1.32684, -10.6147 )
 texture = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
-[node name="Area2D" type="Area2D" parent="." index="1"]
+[node name="Sp_slime_red" type="Sprite" parent="." index="1"]
+
+visible = false
+position = Vector2( -1.0927, -10.5952 )
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="." index="2"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
