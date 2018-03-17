@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://instances/Tower.tscn" type="PackedScene" id=1]
 [ext_resource path="res://instances/Base.tscn" type="PackedScene" id=2]
 [ext_resource path="res://sprites/village.png" type="Texture" id=3]
+[ext_resource path="res://instances/Slot.tscn" type="PackedScene" id=4]
 
 [sub_resource type="GDScript" id=1]
 
@@ -19,6 +20,7 @@ var enemy_spawned = 0
 var enemy_max = 0
 var enemy_dead = 0
 var wave_initialize = true
+var enemy_color = \"blue\"
 var ressource = 100
 
 
@@ -46,14 +48,19 @@ func _process(delta):
 		
 		if wave_current == 1:
 			enemy_max = 2
+			enemy_color = \"blue\"
 		elif wave_current == 2:
 			enemy_max = 5
+			enemy_color = \"red\"
 		elif wave_current == 3:
-			enemy_max = 10
+			enemy_max = 5
+			enemy_color = \"mixed\"
 		elif wave_current == 4:
-			enemy_max = 20
+			enemy_max = 15
+			enemy_color = \"blue\"
 		elif wave_current == 5:
 			enemy_max = 30
+			enemy_color = \"red\"
 		elif wave_current == 6:
 			enemy_max = 40
 		elif wave_current == 7:
@@ -76,6 +83,18 @@ func _process(delta):
 			var enemy_preload = preload(ENEMY_PATH)
 			var enemy_instance = enemy_preload.instance()
 			get_node(\"Path_Enemy\").add_child(enemy_instance)
+			#set the enemy color
+			if enemy_color == \"mixed\":
+				var i = randi()%2
+				print(i)
+				if i == 0:
+					enemy_instance.color = \"blue\"
+					print(\"blue\")
+				else:
+					enemy_instance.color = \"red\"
+					print(\"red\")
+			else:
+				enemy_instance.color = enemy_color
 			enemy_spawned += 1
 
 	#check for victory
@@ -117,12 +136,12 @@ position = Vector2( 256, 150 )
 texture = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Tower" parent="Sprite" index="0" instance=ExtResource( 1 )]
+[node name="Tower" parent="." index="1" instance=ExtResource( 1 )]
 
-position = Vector2( 59.5689, -69.2331 )
+position = Vector2( 315.569, 80.7669 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Base" parent="." index="1" instance=ExtResource( 2 )]
+[node name="Base" parent="." index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 432.378, 123.611 )
 
@@ -130,13 +149,13 @@ position = Vector2( 432.378, 123.611 )
 
 texture = ExtResource( 3 )
 
-[node name="Path_Enemy" type="Path2D" parent="." index="2"]
+[node name="Path_Enemy" type="Path2D" parent="." index="3"]
 
 position = Vector2( 98.4207, -0.108512 )
 curve = SubResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Label_Wave" type="Label" parent="." index="3"]
+[node name="Label_Wave" type="Label" parent="." index="4"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -155,7 +174,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Label_Ressource" type="Label" parent="." index="4"]
+[node name="Label_Ressource" type="Label" parent="." index="5"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -174,5 +193,113 @@ text = "Ressource: 0"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="Slot3" parent="." index="6" instance=ExtResource( 4 )]
+
+position = Vector2( 176, 85.5001 )
+
+[node name="Slot2" parent="." index="7" instance=ExtResource( 4 )]
+
+position = Vector2( 119.5, 87.0001 )
+
+[node name="Slot4" parent="." index="8" instance=ExtResource( 4 )]
+
+position = Vector2( 172.5, 216 )
+
+[node name="Slot6" parent="." index="9" instance=ExtResource( 4 )]
+
+position = Vector2( 224.5, 122 )
+
+[node name="Slot5" parent="." index="10" instance=ExtResource( 4 )]
+
+position = Vector2( 168.5, 145 )
+
+[node name="Slot7" parent="." index="11" instance=ExtResource( 4 )]
+
+position = Vector2( 280.5, 95.0001 )
+
+[node name="Slot8" parent="." index="12" instance=ExtResource( 4 )]
+
+position = Vector2( 270.5, 156 )
+
+[node name="Slot9" parent="." index="13" instance=ExtResource( 4 )]
+
+position = Vector2( 262.5, 216 )
+
+[node name="Slot10" parent="." index="14" instance=ExtResource( 4 )]
+
+position = Vector2( 365.001, 215 )
+
+[node name="Slot11" parent="." index="15" instance=ExtResource( 4 )]
+
+position = Vector2( 370.001, 153.5 )
+
+[node name="Slot12" parent="." index="16" instance=ExtResource( 4 )]
+
+position = Vector2( 222, 176 )
+
+[node name="Slot13" parent="." index="17" instance=ExtResource( 4 )]
+
+position = Vector2( 168, 180.5 )
+
+[node name="Slot14" parent="." index="18" instance=ExtResource( 4 )]
+
+position = Vector2( 71.0003, 145.5 )
+
+[node name="Slot15" parent="." index="19" instance=ExtResource( 4 )]
+
+position = Vector2( 366.501, 101 )
+
+[node name="Slot16" parent="." index="20" instance=ExtResource( 4 )]
+
+position = Vector2( 312.501, 214.5 )
+
+[node name="Slot17" parent="." index="21" instance=ExtResource( 4 )]
+
+position = Vector2( 112.5, 185.5 )
+
+[node name="Slot18" parent="." index="22" instance=ExtResource( 4 )]
+
+position = Vector2( 115.5, 242 )
+
+[node name="Slot19" parent="." index="23" instance=ExtResource( 4 )]
+
+position = Vector2( 218.5, 256.5 )
+
+[node name="Slot20" parent="." index="24" instance=ExtResource( 4 )]
+
+position = Vector2( 231.5, 65.5001 )
+
+[node name="Slot21" parent="." index="25" instance=ExtResource( 4 )]
+
+position = Vector2( 325.501, 136 )
+
+[node name="Slot22" parent="." index="26" instance=ExtResource( 4 )]
+
+position = Vector2( 321.001, 181 )
+
+[node name="Slot23" parent="." index="27" instance=ExtResource( 4 )]
+
+position = Vector2( 68.0003, 62.0001 )
+
+[node name="Slot24" parent="." index="28" instance=ExtResource( 4 )]
+
+position = Vector2( 407.001, 249.5 )
+
+[node name="Slot25" parent="." index="29" instance=ExtResource( 4 )]
+
+position = Vector2( 337.001, 43.0001 )
+
+[node name="Slot" parent="." index="30" instance=ExtResource( 4 )]
+
+position = Vector2( 64.0003, 212 )
+
+[node name="Slot26" parent="." index="31" instance=ExtResource( 4 )]
+
+position = Vector2( 312.001, 267 )
+
+[node name="Slot27" parent="." index="32" instance=ExtResource( 4 )]
+
+position = Vector2( 147.5, 34.5001 )
 
 
