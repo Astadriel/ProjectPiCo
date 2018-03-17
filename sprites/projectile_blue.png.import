@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tower_spot.png-fddd29701adf1c666d4dde2a3eb337f0.stex"
+path="res://.import/projectile_blue.png-3fec583e285627fffa805efbb8571895.stex"
 
 [deps]
 
-source_file="res://sprites/tower_spot.png"
-source_md5="9d79899b98cf23ac23fc2f0eb854edcd"
+source_file="res://sprites/projectile_blue.png"
+source_md5="100b8157ebb13e3840aaaeff51077219"
 
-dest_files=[ "res://.import/tower_spot.png-fddd29701adf1c666d4dde2a3eb337f0.stex" ]
-dest_md5="7e84ca6522844db75545acd1c6698198"
+dest_files=[ "res://.import/projectile_blue.png-3fec583e285627fffa805efbb8571895.stex" ]
+dest_md5="31fa114c81fbb205fda313d0333255e0"
 
 [params]
 
