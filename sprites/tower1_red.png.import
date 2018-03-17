@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/level1_bkgd.png-9b338efb9793ca0901763cbe6296c1a6.stex"
+path="res://.import/tower1_red.png-b1d933fdc2f1b891e3d820b064d86f75.stex"
 
 [deps]
 
-source_file="res://sprites/level1_bkgd.png"
-source_md5="4459c572d9b5c2265bdc1b1a9c555c6d"
+source_file="res://sprites/tower1_red.png"
+source_md5="426d33128bcb7c7fe1ee800f95c1b38e"
 
-dest_files=[ "res://.import/level1_bkgd.png-9b338efb9793ca0901763cbe6296c1a6.stex" ]
-dest_md5="40be2bd53a075397e2cefc0849046ad3"
+dest_files=[ "res://.import/tower1_red.png-b1d933fdc2f1b891e3d820b064d86f75.stex" ]
+dest_md5="aa95d8aa4c64a590c85ea7961cac2cae"
 
 [params]
 

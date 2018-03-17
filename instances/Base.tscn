@@ -4,7 +4,9 @@
 
 script/source = "extends Area2D
 
+var game_over = false
 var hp = 20
+const GAME_OVER_PATH = \"res://instances/Game_Over.tscn\"
 # class member variables go here, for example:
 # var a = 2
 # var b = \"textvar\"
@@ -14,10 +16,13 @@ func _ready():
 	# Initialization here
 	pass
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+func _process(delta):
+	if hp < 1:
+		if game_over == false:
+			var game_over_preload = preload(GAME_OVER_PATH)
+			var game_over_instance = game_over_preload.instance()
+			get_tree().get_root().get_node(\"World\").add_child(game_over_instance)
+			game_over = true
 "
 
 [sub_resource type="RectangleShape2D" id=2]

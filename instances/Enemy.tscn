@@ -9,6 +9,8 @@ script/source = "extends PathFollow2D
 var hp = 100
 var speed = 500
 var damage = 1
+var type = 0
+var ini = true
 # class member variables go here, for example:
 # var a = 2
 # var b = \"textvar\"
@@ -17,43 +19,52 @@ func _ready():
 	pass
 
 func _process(delta):
+	if ini == true:
+		ini = false
 	# Called every frame. Delta is time since last frame.
 	# movement along the path
 	set_offset(get_offset()+delta*speed)
 	
 	# Destroy if hp < 1
 	if hp < 1:
+		get_tree().get_root().get_node(\"World\").enemy_dead += 1
 		queue_free()
 	pass
 
 
 "
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=2]
 
 script/source = "extends Area2D
 
+var damage = 1
 # class member variables go here, for example:
 # var a = 2
 # var b = \"textvar\"
 
-func _ready():
-	connect(\"area_enter\",self,\"_on_area_enter\")
-	pass
-
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
+#func _ready():
 #	pass
-func _on_area_enter(other):
-	print(\"thing\")
+
+func _process(delta):
+	
+	# Called every frame. Delta is time since last frame.
+	# Update game logic here.
+	pass
+	
+
+
+
+func _on_Area2D_area_entered(other):
+
 	
 	if other.is_in_group(\"base\"):
 		other.hp -= damage
-		queue_free()
+		print(other.hp)
+	pass # replace with function body
 "
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
@@ -84,12 +95,14 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = SubResource( 3 )
+script = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 
 position = Vector2( 1.06016, 0.219633 )
 scale = Vector2( 2.13292, 2.09907 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
+
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_Area2D_area_entered"]
 
 
