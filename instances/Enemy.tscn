@@ -11,7 +11,7 @@ var speed = 50
 var damage = 1
 var type = 0
 var ini = true
-var degen = 4 #for debug purposes
+var degen = 3 #for debug purposes
 # class member variables go here, for example:
 # var a = 2
 # var b = \"textvar\"
@@ -73,7 +73,7 @@ func _on_Area2D_area_entered(other):
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[node name="Enemy" type="PathFollow2D" index="0" groups=[
+[node name="Enemy" type="PathFollow2D" groups=[
 "enemy",
 ]]
 
