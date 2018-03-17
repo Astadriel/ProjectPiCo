@@ -42,6 +42,7 @@ func _process(delta):
 
 script/source = "extends Area2D
 
+var color = \"blue\"
 var damage = 1
 # class member variables go here, for example:
 # var a = 2

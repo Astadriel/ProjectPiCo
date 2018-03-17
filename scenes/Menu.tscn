@@ -8,7 +8,7 @@ func _on_Start_pressed():
 	get_tree().change_scene(\"res://scenes/World.tscn\")
 "
 
-[node name="Menu" type="Node"]
+[node name="Menu" type="Node" index="0"]
 
 [node name="MainMenu" type="Panel" parent="." index="0"]
 
