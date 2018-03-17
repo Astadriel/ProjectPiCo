@@ -10,7 +10,7 @@ source_file="res://sprites/tower_spot.png"
 source_md5="9d79899b98cf23ac23fc2f0eb854edcd"
 
 dest_files=[ "res://.import/tower_spot.png-fddd29701adf1c666d4dde2a3eb337f0.stex" ]
-dest_md5="7e84ca6522844db75545acd1c6698198"
+dest_md5="59db2b97af1a3f7ff66140076ab714c5"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -28,5 +28,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
