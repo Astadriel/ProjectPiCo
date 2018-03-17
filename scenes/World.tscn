@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://sprites/level1_bkgd.png" type="Texture" id=1]
 
 [sub_resource type="GDScript" id=1]
 
@@ -6,29 +8,35 @@ script/source = "extends Node
 
 # class member variables go here, for example:
 # var a = 2
-const ENEMY_TEST_PATH = \"res://instances/Enemy_test.tscn\"
-var spawn_delay = 100
+const ENEMY_PATH = \"res://instances/Enemy.tscn\"
+var spawn_delay = 3
 var spawn_count = spawn_delay
 
 func _ready():
-	var enemy_preload = preload(ENEMY_TEST_PATH)
-	var enemy_instance = enemy_preload.instance()
-	get_node(\"Path_Enemy\").add_child(enemy_instance)
+
 	# Called every time the node is added to the scene.
 	# Initialization here
 	pass
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+func _process(delta):
+	spawn_count -= delta
+	
+	if spawn_count < 0: #spawn an enemy
+		var enemy_preload = preload(ENEMY_PATH)
+		var enemy_instance = enemy_preload.instance()
+		get_node(\"Path_Enemy\").add_child(enemy_instance)
+		spawn_count = spawn_delay
+	
+	# Called every frame. Delta is time since last frame.
+	# Update game logic here.
+	pass
 "
 
 [sub_resource type="Curve2D" id=2]
 
 bake_interval = 5.0
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -38.8374, 8.05359, 0, 0, 0, 0, 101.81, -6.75134, 0, 0, 0, 0, 260.963, -14.1538, 0, 0, 0, 0, 479.336, 2.50177, 0, 0, 83.2778, 46.2654, 708.812, 78.3771, 0, 0, -75.8753, 135.095, 745.825, 209.771, 0, 0, -90.6803, -16.6556, 468.232, 274.543, 0, 0, -173.958, -16.6556, 253.56, 233.829, 0, 0, -109.186, 27.7593, 29.6355, 254.186, 0, 0, 64.7716, 49.9667, -24.0325, 405.936, 0, 0, 74.0247, 16.6556, 149.926, 446.65, 0, 0, 0, 0, 464.531, 472.559, 0, 0, 0, 0, 675.501, 448.501, 0, 0, 0, 0, 823.551, 405.937 )
+"points": PoolVector2Array( 0, 0, 0, 0, -135.947, 433.053, 0, 0, 0, 0, -38.9559, 435.509, 0, 0, 0, 0, -37.7282, 332.379, 0, 0, 0, 0, -10.7179, 248.892, 0, 0, -1.43615, -75.2807, -32.8172, 113.841, 0, 0, 2.69996, -3.63943, 70.3128, 27.8996, 0, 0, 0.17234, 1.76048, 232.374, 48.7711, 0, 0, -0.846878, 0.532738, 197.998, 169.09, 0, 0, -62.5319, 35.1257, 87.5011, 177.684, 0, 0, 77.049, 54.8777, 99.7785, 436.736, 0, 0, -0.867348, -1.76048, 218.869, 436.736, 0, 0, 0, 0, 206.592, 270.992, 0, 0, 0, 0, 336.732, 204.694, 0, 0, 0, 0, 346.554, 80.6924, 0, 0, 0, 0, 464.417, 31.5828, 0, 0, 0, 0, 558.953, 97.8807, 0, 0, 0, 0, 463.189, 160.495, 0, 0, 0, 0, 434.951, 293.091, 0, 0, 0, 0, 309.722, 340.973, 0, 0, 0, 0, 306.039, 439.192, 0, 0, 0, 0, 545.448, 451.469, 0, 0, 0, 0, 658.399, 415.865, 0, 0, 0, 0, 631.389, 321.329, 0, 0, 0, 0, 549.131, 290.636, 0, 0, 0, 0, 563.864, 202.238, 0, 0, 0, 0, 665.766, 182.595, 0, 0, 0, 0, 725.925, 186.278 )
 }
 _sections_unfolded = [ "Resource" ]
 
@@ -36,7 +44,14 @@ _sections_unfolded = [ "Resource" ]
 
 script = SubResource( 1 )
 
-[node name="Path_Enemy" type="Path2D" parent="." index="0"]
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+position = Vector2( 514.246, 297.728 )
+scale = Vector2( 2.3, 2.27167 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Path_Enemy" type="Path2D" parent="." index="1"]
 
 position = Vector2( 184.428, 50.7663 )
 curve = SubResource( 2 )
