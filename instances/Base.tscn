@@ -30,7 +30,7 @@ func _process(delta):
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[node name="Base" type="Area2D" groups=[
+[node name="Base" type="Area2D" index="0" groups=[
 "base",
 ]]
 
