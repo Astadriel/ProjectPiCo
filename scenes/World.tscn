@@ -109,21 +109,21 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Tower" parent="Sprite" index="0" instance=ExtResource( 1 )]
 
-position = Vector2( 75.0689, -73.7331 )
+position = Vector2( 59.5689, -69.2331 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Path_Enemy" type="Path2D" parent="." index="1"]
-
-position = Vector2( 98.5886, 2.27174 )
-scale = Vector2( 0.478748, 0.597328 )
-curve = SubResource( 3 )
-
-[node name="Base" parent="." index="2" instance=ExtResource( 2 )]
+[node name="Base" parent="." index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 432.378, 123.611 )
 
 [node name="Sprite" type="Sprite" parent="Base" index="1"]
 
 texture = ExtResource( 3 )
+
+[node name="Path_Enemy" type="Path2D" parent="." index="2"]
+
+position = Vector2( 98.5886, 2.27174 )
+scale = Vector2( 0.478748, 0.597328 )
+curve = SubResource( 3 )
 
 
