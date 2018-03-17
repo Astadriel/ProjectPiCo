@@ -1,8 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://sprites/level1_bkgd.png" type="Texture" id=1]
-[ext_resource path="res://instances/Tower.tscn" type="PackedScene" id=2]
-[ext_resource path="res://instances/Base.tscn" type="PackedScene" id=3]
+[ext_resource path="res://instances/Tower.tscn" type="PackedScene" id=1]
+[ext_resource path="res://instances/Base.tscn" type="PackedScene" id=2]
 
 [sub_resource type="GDScript" id=1]
 
@@ -82,6 +81,11 @@ func _process(delta):
 	
 "
 
+[sub_resource type="StreamTexture" id=3]
+
+flags = 0
+load_path = "res://.import/level1_bkgd.png-9b338efb9793ca0901763cbe6296c1a6.stex"
+
 [sub_resource type="Curve2D" id=2]
 
 bake_interval = 5.0
@@ -90,28 +94,31 @@ _data = {
 }
 _sections_unfolded = [ "Resource" ]
 
-[node name="World" type="Node" index="0"]
+[node name="World" type="Node2D" index="0"]
 
+scale = Vector2( 2, 2 )
 script = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
-position = Vector2( 514.246, 296.221 )
-scale = Vector2( 2.3, 2.27167 )
-texture = ExtResource( 1 )
+position = Vector2( 199.959, 135.673 )
+texture = SubResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Tower" parent="Sprite" index="0" instance=ExtResource( 2 )]
+[node name="Tower" parent="Sprite" index="0" instance=ExtResource( 1 )]
 
 position = Vector2( 75.0689, -73.7331 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Path_Enemy" type="Path2D" parent="." index="1"]
 
-position = Vector2( 184.428, 50.7663 )
+position = Vector2( 59.301, -9.02196 )
+scale = Vector2( 0.478748, 0.600009 )
 curve = SubResource( 2 )
 
-[node name="Base" parent="." index="2" instance=ExtResource( 3 )]
+[node name="Base" parent="." index="2" instance=ExtResource( 2 )]
 
-position = Vector2( 913.437, 236.953 )
+position = Vector2( 402.378, 116.111 )
 
 

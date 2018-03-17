@@ -10,7 +10,7 @@ source_file="res://sprites/tower1_red.png"
 source_md5="426d33128bcb7c7fe1ee800f95c1b38e"
 
 dest_files=[ "res://.import/tower1_red.png-b1d933fdc2f1b891e3d820b064d86f75.stex" ]
-dest_md5="88e626aefe1ecc7047f774f64c6f6d03"
+dest_md5="aa95d8aa4c64a590c85ea7961cac2cae"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -28,5 +28,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

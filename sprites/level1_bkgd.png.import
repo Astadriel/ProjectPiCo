@@ -10,7 +10,7 @@ source_file="res://sprites/level1_bkgd.png"
 source_md5="4459c572d9b5c2265bdc1b1a9c555c6d"
 
 dest_files=[ "res://.import/level1_bkgd.png-9b338efb9793ca0901763cbe6296c1a6.stex" ]
-dest_md5="6ede7da8c0ddef669b0bbd66da2fa206"
+dest_md5="40be2bd53a075397e2cefc0849046ad3"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -28,5 +28,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
