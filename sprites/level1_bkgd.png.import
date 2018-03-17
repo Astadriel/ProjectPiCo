@@ -7,10 +7,10 @@ path="res://.import/level1_bkgd.png-9b338efb9793ca0901763cbe6296c1a6.stex"
 [deps]
 
 source_file="res://sprites/level1_bkgd.png"
-source_md5="7d30976f39d7ecb30428f028a6290ea3"
+source_md5="e677509b94368e5702f4c3fe037c43d6"
 
 dest_files=[ "res://.import/level1_bkgd.png-9b338efb9793ca0901763cbe6296c1a6.stex" ]
-dest_md5="6250c8dd415cb3d965155eed621ec68a"
+dest_md5="cf8de9810eb6df861629aa477f21f705"
 
 [params]
 

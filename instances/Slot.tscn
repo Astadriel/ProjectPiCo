@@ -1,6 +1,5 @@
 [gd_scene load_steps=3 format=2]
 
-<<<<<<< HEAD
 [ext_resource path="res://scripts/Slot.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -25,8 +24,5 @@ _sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index"
 shape = SubResource( 1 )
 
 [connection signal="input_event" from="." to="." method="_on_Slot_input_event"]
-=======
-[node name="Slot" type="Node2D" index="0"]
->>>>>>> 90f0b2176d89fc9b042ec723cc4bfacc8a3a34a5
 
 
