@@ -16,8 +16,8 @@ func _process(delta):
 
 func _on_Slot_input_event(viewport, event, shape_idx):
 	if event.is_action_pressed("Mouse_Button_Left"):
-        print("Clicked")
-		var tower_build_preload = preload(TOWER_BUILD_PATH)
-		var tower_build_instance = tower_build_preload.instance()
-		get_tree().get_root().get_node("World").add_child(tower_build_instance)
+		print("Clicked")
+#		var tower_build_preload = preload(TOWER_BUILD_PATH)
+#		var tower_build_instance = tower_build_preload.instance()
+#		get_tree().get_root().get_node("World").add_child(tower_build_instance)
 		tower_build = true
