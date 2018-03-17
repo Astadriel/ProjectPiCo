@@ -1,5 +1,52 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
 
-[node name="Missile" type="Node2D"]
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Area2D
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+var damage = 20
+var lifetime = 2
+
+func _ready():
+	connect(\"area_enter\",self,\"_on_area_enter\")
+	pass
+
+func _process(delta):
+	# Called every frame. Delta is time since last frame.
+	lifetime -= delta
+	if lifetime < 0 :
+		queue_free()
+	# Update game logic here.
+	pass
+
+func _on_area_enter(other):
+	if other.is_in_group(\"enemy\"):
+		other.hp -= damage
+		queue_free()
+	pass
+"
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[node name="Missile" type="Area2D"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+shape = SubResource( 2 )
 
 
