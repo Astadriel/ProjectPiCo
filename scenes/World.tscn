@@ -19,14 +19,19 @@ var enemy_spawned = 0
 var enemy_max = 0
 var enemy_dead = 0
 var wave_initialize = true
+var ressource = 100
 
 
-#func _ready():
-#	pass
+func _ready():
+
+	pass
 
 func _process(delta):
 	#counter updates
 	spawn_count -= delta
+	#update labels
+	get_node(\"Label_Wave\").text = str(\"WAVE: \", wave_current, \"/\", wave_max)
+	get_node(\"Label_Ressource\").text = str(\"RESSOURCE: \", ressource)
 	#check if end of current wave
 	if enemy_dead == enemy_max:
 		if wave_current < wave_max:
@@ -100,7 +105,7 @@ _data = {
 }
 _sections_unfolded = [ "Resource" ]
 
-[node name="World" type="Node2D" index="0"]
+[node name="World" type="Node2D"]
 
 scale = Vector2( 2, 2 )
 script = SubResource( 1 )
@@ -130,5 +135,44 @@ texture = ExtResource( 3 )
 position = Vector2( 98.4207, -0.108512 )
 curve = SubResource( 3 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="Label_Wave" type="Label" parent="." index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "WAVE: 0/0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label_Ressource" type="Label" parent="." index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 79.0
+margin_right = 161.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Ressource: 0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 

@@ -11,7 +11,9 @@ var speed = 50
 var damage = 1
 var type = 0
 var ini = true
+var ressource = 5
 var degen = 4 #for debug purposes
+
 # class member variables go here, for example:
 # var a = 2
 # var b = \"textvar\"
@@ -32,6 +34,8 @@ func _process(delta):
 		get_tree().get_root().get_node(\"World\").enemy_dead += 1
 		print(\"Enemy killed\")
 		print(get_tree().get_root().get_node(\"World\").enemy_dead )
+		#add ressource
+		get_tree().get_root().get_node(\"World\").ressource += ressource
 		queue_free()
 	pass
 
