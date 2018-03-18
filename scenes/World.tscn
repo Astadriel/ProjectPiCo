@@ -198,8 +198,8 @@ max_lines_visible = -1
 
 [node name="TowerSlots" type="Node2D" parent="." index="6"]
 
-editor/display_folded = true
-visible = false
+scale = Vector2( 0.5, 0.5 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Slot22" parent="TowerSlots" index="0" instance=ExtResource( 4 )]
 
