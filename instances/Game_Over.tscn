@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ressources/transparent_panel.tres" type="StyleBox" id=1]
 [ext_resource path="res://fonts/normal.tres" type="DynamicFont" id=2]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=1]
 
 script/source = "extends Panel
 var delay = 3
@@ -19,7 +19,7 @@ func _process(delta):
 		get_tree().change_scene(\"res://scenes/Menu.tscn\")
 "
 
-[node name="Game_Over" type="Panel"]
+[node name="Game_Over" type="Panel" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -35,8 +35,8 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/panel = SubResource( 1 )
-script = SubResource( 2 )
+custom_styles/panel = ExtResource( 1 )
+script = SubResource( 1 )
 _sections_unfolded = [ "custom_styles" ]
 
 [node name="Label" type="Label" parent="." index="0"]

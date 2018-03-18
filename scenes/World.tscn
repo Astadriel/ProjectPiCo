@@ -129,7 +129,7 @@ _data = {
 }
 _sections_unfolded = [ "Resource" ]
 
-[node name="World" type="Node2D" index="0"]
+[node name="World" type="Node2D"]
 
 scale = Vector2( 2, 2 )
 script = SubResource( 1 )
@@ -437,8 +437,8 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/panel = ExtResource( 6 )
 _sections_unfolded = [ "custom_styles" ]
+
 [node name="Music_Main" type="AudioStreamPlayer" parent="." index="10"]
 
 stream = ExtResource( 6 )
