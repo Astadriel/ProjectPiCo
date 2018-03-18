@@ -1,4 +1,37 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://sprites/level1_bkgd.png" type="Texture" id=1]
+[ext_resource path="res://sprites/village.png" type="Texture" id=2]
+[ext_resource path="res://sprites/tower1_blue.png" type="Texture" id=3]
+[ext_resource path="res://sprites/tower1_red.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxFlat" id=2]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0, 0, 0, 0.475137 )
+draw_center = true
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
 
 [sub_resource type="GDScript" id=1]
 
@@ -10,22 +43,84 @@ func _on_Start_pressed():
 
 [node name="Menu" type="Node" index="0"]
 
-[node name="MainMenu" type="Panel" parent="." index="0"]
+[node name="Node2D" type="Node2D" parent="." index="0"]
+
+scale = Vector2( 2, 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="Node2D" index="0"]
+
+position = Vector2( 256, 150 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="village" type="Sprite" parent="Node2D" index="1"]
+
+position = Vector2( 432.378, 123.611 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="tower1_blue" type="Sprite" parent="Node2D/village" index="0"]
+
+position = Vector2( -165.892, 88.0567 )
+texture = ExtResource( 3 )
+
+[node name="tower1_red" type="Sprite" parent="Node2D/village" index="1"]
+
+position = Vector2( -259.151, 89.7847 )
+texture = ExtResource( 4 )
+
+[node name="tower1_red4" type="Sprite" parent="Node2D/village" index="2"]
+
+position = Vector2( -371.063, -7.16819 )
+texture = ExtResource( 4 )
+
+[node name="tower1_red2" type="Sprite" parent="Node2D/village" index="3"]
+
+position = Vector2( -365.522, 133.552 )
+texture = ExtResource( 4 )
+
+[node name="tower1_red3" type="Sprite" parent="Node2D/village" index="4"]
+
+position = Vector2( -117.877, -41.5172 )
+texture = ExtResource( 4 )
+
+[node name="tower1_blue2" type="Sprite" parent="Node2D/village" index="5"]
+
+position = Vector2( -68.6251, 88.0567 )
+texture = ExtResource( 3 )
+
+[node name="tower1_blue4" type="Sprite" parent="Node2D/village" index="6"]
+
+position = Vector2( -376.658, 76.4224 )
+texture = ExtResource( 3 )
+
+[node name="tower1_blue3" type="Sprite" parent="Node2D/village" index="7"]
+
+position = Vector2( -258.653, -44.9072 )
+texture = ExtResource( 3 )
+
+[node name="MainMenu" type="Panel" parent="." index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 409.0
-margin_top = 229.0
-margin_right = 650.0
-margin_bottom = 339.0
+margin_left = 427.0
+margin_top = 228.0
+margin_right = 664.0
+margin_bottom = 349.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_styles/panel = SubResource( 2 )
+_sections_unfolded = [ "Theme", "custom_styles" ]
 
 [node name="Start" type="Button" parent="MainMenu" index="0"]
 
@@ -33,10 +128,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 66.0
-margin_top = 40.0
-margin_right = 190.0
-margin_bottom = 72.0
+margin_left = 62.0
+margin_top = 50.0
+margin_right = 186.0
+margin_bottom = 82.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
