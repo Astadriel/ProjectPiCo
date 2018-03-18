@@ -68,9 +68,11 @@ func _on_Area2D_area_entered(other):
 	#interaction with the village
 	if other.is_in_group(\"base\"):
 		#remove villagers
-		other.hp -= damage
+
+		other.hp -= get_parent().damage
 	if other.is_in_group(\"missile\"):
 		print(\"debug\")
+
 
 "
 
