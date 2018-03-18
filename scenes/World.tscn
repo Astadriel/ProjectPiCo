@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://instances/Tower.tscn" type="PackedScene" id=1]
 [ext_resource path="res://instances/Base.tscn" type="PackedScene" id=2]
@@ -90,7 +90,7 @@ func _process(delta):
 		spawn_count = spawn_delay
 		if wave_current == wave_max:
 			if enemy_spawned == enemy_max-2:
-				spawn_count = 10*spawn_delay
+				spawn_count = 20*spawn_delay
 		if enemy_spawned < enemy_max:
 			var enemy_preload = preload(ENEMY_PATH)
 			var enemy_instance = enemy_preload.instance()
@@ -137,7 +137,37 @@ _data = {
 }
 _sections_unfolded = [ "Resource" ]
 
-[node name="World" type="Node2D" index="0"]
+[sub_resource type="GDScript" id=4]
+
+script/source = "extends Button
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
+func _ready():
+	# Called every time the node is added to the scene.
+	# Initialization here
+	pass
+
+#func _process(delta):
+#	# Called every frame. Delta is time since last frame.
+#	# Update game logic here.
+#	pass
+
+func _on_How_To_Play_pressed():
+	
+	get_tree().paused = true;
+	get_node(\"Help\").show()
+
+func _on_Close_Help_pressed():
+
+	get_node(\"Help\").hide()
+	get_tree().paused = false;
+
+"
+
+[node name="World" type="Node2D"]
 
 scale = Vector2( 2, 2 )
 script = SubResource( 1 )
@@ -426,10 +456,12 @@ group = null
 text = "HOW TO PLAY"
 flat = false
 align = 1
-_sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
+script = SubResource( 4 )
+_sections_unfolded = [ "Pause", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
 
-[node name="Panel" type="Panel" parent="How_To_Play" index="0"]
+[node name="Help" type="Panel" parent="How_To_Play" index="0"]
 
+pause_mode = 2
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
@@ -446,9 +478,9 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_styles/panel = ExtResource( 6 )
-_sections_unfolded = [ "custom_styles" ]
+_sections_unfolded = [ "Pause", "custom_styles" ]
 
-[node name="Label" type="Label" parent="How_To_Play/Panel" index="0"]
+[node name="Label" type="Label" parent="How_To_Play/Help" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -456,8 +488,8 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 10.0
 margin_top = 12.0
-margin_right = 380.0
-margin_bottom = 150.0
+margin_right = 418.0
+margin_bottom = 52.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -465,11 +497,46 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = ExtResource( 4 )
-text = "Click on a tower to switch the tower color:
-Red towers fire on red monsters, and blue towers fire on blue monsters."
+text = "Defend your village from the horrible slimes!
+
+When a slime arrives at your village, it eats one villager.
+If all villagers are eaten, you lose the game.
+
+You gain money when a tower kills a slime.
+With enough money, you can build a new tower, click on a tower spot to place one.
+
+Click on a tower to switch its color:
+Red towers fire on red slimes, and blue towers fire on blue slimes."
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Close_Help" type="Button" parent="How_To_Play/Help" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 195.0
+margin_top = 189.0
+margin_right = 257.0
+margin_bottom = 207.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 4 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Ok"
+flat = false
+align = 1
 _sections_unfolded = [ "custom_fonts" ]
 
 [node name="Music_Main" type="AudioStreamPlayer" parent="." index="10"]
@@ -495,5 +562,9 @@ volume_db = 0.0
 autoplay = false
 mix_target = 0
 bus = "Master"
+
+[connection signal="pressed" from="How_To_Play" to="How_To_Play" method="_on_How_To_Play_pressed"]
+
+[connection signal="pressed" from="How_To_Play/Help/Close_Help" to="How_To_Play" method="_on_Close_Help_pressed"]
 
 
