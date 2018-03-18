@@ -15,7 +15,7 @@ const VICTORY_PATH = \"res://instances/Victory.tscn\"
 var spawn_delay = 1
 var spawn_count = spawn_delay
 var victory = false
-var wave_max = 10
+var wave_max = 1
 var wave_current = 0
 var enemy_spawned = 0
 var enemy_max = 0
@@ -98,6 +98,12 @@ func _process(delta):
 			else:
 				enemy_instance.color = enemy_color
 			enemy_spawned += 1
+			if wave_current == wave_max:
+				if enemy_spawned == enemy_max:
+					enemy_instance.type = \"boss\"
+					enemy_instance.color = \"green\"
+					
+
 
 	#check for victory
 	if get_node(\"Base\").game_over == false:

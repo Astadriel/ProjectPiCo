@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://sprites/monsters/slime_blue.png" type="Texture" id=1]
 [ext_resource path="res://sprites/monsters/slime_red.png" type="Texture" id=2]
+[ext_resource path="res://sprites/slime_king_green.png" type="Texture" id=3]
 
 [sub_resource type="GDScript" id=1]
 
@@ -15,6 +16,8 @@ var color = \"blue\"
 var ini = true
 var ressource = 10
 var path_advance = 0
+var color_switch = 5
+var color_switch_count = color_switch
 
 
 func _ready():
@@ -31,8 +34,29 @@ func _process(delta):
 				get_node(\"Sp_slime_red\").visible = true
 			else:
 				print(\"no corresponding sprite\")
-		
+		else:
+			get_node(\"Sp_boss_green\").visible = true
+			hp = 50
+			damage = 20
 		ini = false
+		
+	if type == \"boss\":
+		color_switch_count -= delta
+		if color_switch_count < 0:
+			color_switch_count = color_switch
+			get_node(\"Sp_boss_green\").visible = false
+#			get_node(\"Sp_boss_red\").visible = false
+#			get_node(\"Sp_boss_blue\").visible = false
+			if color == \"blue\":
+				color = \"red\"
+#				get_node(\"Sp_boss_red\").visible = true
+			elif color == \"red\":
+				color = \"green\"
+				get_node(\"Sp_boss_green\").visible = true
+			else:
+				color = \"blue\"
+#				get_node(\"Sp_boss_blue\").visible = true
+				
 	# movement
 	set_offset(get_offset()+delta*speed)
 	path_advance = get_offset()
@@ -109,7 +133,13 @@ visible = false
 position = Vector2( -1.0927, -10.5952 )
 texture = ExtResource( 2 )
 
-[node name="Area2D" type="Area2D" parent="." index="2"]
+[node name="Sp_boss_green" type="Sprite" parent="." index="2"]
+
+visible = false
+position = Vector2( -0.774841, -10.2667 )
+texture = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="." index="3"]
 
 position = Vector2( -1.63076, -4.08736 )
 scale = Vector2( 0.733006, 0.667288 )
