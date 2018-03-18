@@ -43,7 +43,7 @@ func _on_Start_pressed():
 	get_tree().change_scene(\"res://scenes/World.tscn\")
 "
 
-[node name="Menu" type="Node"]
+[node name="Menu" type="Node" index="0"]
 
 [node name="Node2D" type="Node2D" parent="." index="0"]
 
@@ -152,13 +152,13 @@ _sections_unfolded = [ "Rect", "custom_fonts" ]
 [node name="Label" type="Label" parent="MainMenu" index="1"]
 
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -60.5
-margin_top = -35.5
-margin_right = 68.5
-margin_bottom = -9.5
+anchor_bottom = 1.0
+margin_left = -76.5
+margin_top = 21.0
+margin_right = 75.5
+margin_bottom = -74.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -166,12 +166,13 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = ExtResource( 5 )
-text = "GAME TITLE"
+custom_colors/font_color = Color( 0.59375, 1, 0, 1 )
+text = "PIXEL SLIME TD"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="2"]
 
