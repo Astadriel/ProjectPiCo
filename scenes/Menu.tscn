@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://sprites/level1_bkgd.png" type="Texture" id=1]
 [ext_resource path="res://sprites/village.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://sprites/tower1_red.png" type="Texture" id=4]
 [ext_resource path="res://fonts/normal.tres" type="DynamicFont" id=5]
 [ext_resource path="res://music/intro.ogg" type="AudioStream" id=6]
+[ext_resource path="res://icon.png" type="Texture" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -40,7 +41,31 @@ anti_aliasing_size = 1
 script/source = "extends Button
 
 func _on_Start_pressed():
-	get_tree().change_scene(\"res://scenes/World.tscn\")
+	get_tree().get_root().get_node(\"Menu\").get_node(\"Panel_Credits\").visible = true
+"
+
+[sub_resource type="GDScript" id=3]
+
+script/source = "extends Button
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
+func _ready():
+	# Called every time the node is added to the scene.
+	# Initialization here
+	pass
+
+#func _process(delta):
+#	# Called every frame. Delta is time since last frame.
+#	# Update game logic here.
+#	pass
+
+
+func _on_Button_pressed():
+	get_parent().visible = false
+	pass # replace with function body
 "
 
 [node name="Menu" type="Node" index="0"]
@@ -58,6 +83,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="village" type="Sprite" parent="Node2D" index="1"]
 
+editor/display_folded = true
 position = Vector2( 432.378, 123.611 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
@@ -111,7 +137,7 @@ anchor_bottom = 0.0
 margin_left = 385.0
 margin_top = 220.0
 margin_right = 622.0
-margin_bottom = 341.0
+margin_bottom = 401.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -149,7 +175,35 @@ align = 1
 script = SubResource( 2 )
 _sections_unfolded = [ "Rect", "custom_fonts" ]
 
-[node name="Label" type="Label" parent="MainMenu" index="1"]
+[node name="Credits" type="Button" parent="MainMenu" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 62.0
+margin_top = 115.0
+margin_right = 186.0
+margin_bottom = 147.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 5 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Credits"
+flat = false
+align = 1
+script = SubResource( 2 )
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+
+[node name="Label" type="Label" parent="MainMenu" index="2"]
 
 anchor_left = 0.5
 anchor_top = 0.0
@@ -158,7 +212,7 @@ anchor_bottom = 1.0
 margin_left = -76.5
 margin_top = 21.0
 margin_right = 75.5
-margin_bottom = -74.0
+margin_bottom = -128.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -182,6 +236,90 @@ autoplay = true
 mix_target = 0
 bus = "Master"
 
+[node name="Panel_Credits" type="Panel" parent="." index="3"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 330.0
+margin_top = 148.0
+margin_right = 713.0
+margin_bottom = 488.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Button" type="Button" parent="Panel_Credits" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 266.0
+margin_top = 271.0
+margin_right = 354.0
+margin_bottom = 305.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 5 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "OK"
+flat = false
+align = 1
+script = SubResource( 3 )
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Label" type="Label" parent="Panel_Credits" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 30.0
+margin_top = 29.0
+margin_right = 286.0
+margin_bottom = 215.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 5 )
+text = "Made by:
+
+Joel127
+Isipare
+Astadriel
+
+For Pixel Weekend Jam #2"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="icon" type="Sprite" parent="Panel_Credits/Label" index="0"]
+
+position = Vector2( 30.9581, 243.6 )
+texture = ExtResource( 7 )
+
 [connection signal="pressed" from="MainMenu/Start" to="MainMenu/Start" method="_on_Start_pressed"]
+
+[connection signal="pressed" from="MainMenu/Credits" to="MainMenu/Credits" method="_on_Start_pressed"]
+
+[connection signal="pressed" from="Panel_Credits/Button" to="Panel_Credits/Button" method="_on_Button_pressed"]
 
 
