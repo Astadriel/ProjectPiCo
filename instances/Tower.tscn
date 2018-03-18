@@ -42,7 +42,7 @@ func _process(delta):
 								target_pos_x = child.global_position.x
 								target_pos_y = child.global_position.y
 								target = true
-								print(\"in range!\")
+								
 		if target == true:
 			#projectile generation
 			var missile_preload = preload(MISSILE_PATH)
@@ -51,10 +51,8 @@ func _process(delta):
 			missile_instance.global_position.x = global_position.x
 			missile_instance.global_position.y = global_position.y
 			missile_instance.color = color
-			
-			var missile_angle = get_angle_to(Vector2(target_pos_x-global_position.x,target_pos_y-global_position.y))
-			var norm_vector = Vector2(sin(missile_angle),cos(missile_angle))
-			missile_instance.velocity = (Vector2(norm_vector.x*missile_velocity,norm_vector.y*missile_velocity))
+			var dir = Vector2(target_pos_x-global_position.x,target_pos_y-global_position.y).normalized()
+			missile_instance.velocity = dir * missile_velocity
 			fire_count = fire_rate
 		else:
 			fire_count = fire_rate/4 #re-check faster

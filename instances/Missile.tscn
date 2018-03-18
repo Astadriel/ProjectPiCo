@@ -8,7 +8,7 @@
 script/source = "extends Area2D
 
 var damage = 20
-var lifetime = 1
+var lifetime = 0.3
 var initialize = true
 var color = \"blue\"
 var speed = 100
@@ -25,7 +25,6 @@ func _process(delta):
 		else:
 			get_node(\"Sp_missile_red\").visible = true
 		initialize = false
-		print(\"missile spawned\")
 		
 	
 	global_position.x += velocity.x * delta
@@ -33,26 +32,29 @@ func _process(delta):
 	
 	lifetime -= delta
 	if lifetime < 0 :
-		print(\"missile destroyed\")
 		queue_free()
 		pass
 
 
 func _on_Missile_area_entered(other):
+	print(\"debug\")
 	if other.is_in_group(\"enemy\"):
 		if other.color == color:
 			#deal damage
 			other.hp -= damage
+			print(\"hit\")
 			#destroy self
 			queue_free()
 "
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+radius = 10.0
 
-[node name="Missile" type="Area2D" index="0"]
+[node name="Missile" type="Area2D" groups=[
+"missile",
+]]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -66,8 +68,8 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
-position = Vector2( -0.135963, -0.0285382 )
-scale = Vector2( 0.382311, 0.38838 )
+position = Vector2( -0.039391, -0.360685 )
+scale = Vector2( 0.65136, 0.66259 )
 shape = SubResource( 2 )
 
 [node name="Sp_missile_blue" type="Sprite" parent="." index="1"]
