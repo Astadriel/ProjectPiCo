@@ -1,6 +1,6 @@
 [gd_scene format=2]
 
-[node name="Game_Over" type="Label" index="0"]
+[node name="Game_Over" type="Label"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -16,7 +16,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-text = "GAME OVER YOU NOOOB!!!"
+text = "GAME OVER"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1

@@ -14,7 +14,7 @@ const VICTORY_PATH = \"res://instances/Victory.tscn\"
 var spawn_delay = 1
 var spawn_count = spawn_delay
 var victory = false
-var wave_max = 2
+var wave_max = 10
 var wave_current = 0
 var enemy_spawned = 0
 var enemy_max = 0
@@ -59,22 +59,24 @@ func _process(delta):
 			enemy_max = 15
 			enemy_color = \"blue\"
 		elif wave_current == 5:
-			enemy_max = 30
+			enemy_max = 15
 			enemy_color = \"red\"
+			spawn_delay = 0.5
 		elif wave_current == 6:
-			enemy_max = 40
+			enemy_color = \"mixed\"
+			enemy_max = 20
 		elif wave_current == 7:
-			enemy_max = 60
+			enemy_max = 30
 		elif wave_current == 8:
-			enemy_max = 80
+			spawn_delay = 0.3
+			enemy_max = 40
 		elif wave_current == 9:
+			enemy_max = 60
+		elif wave_current == 10:
 			enemy_max = 100
 		else:
 			wave_current = wave_max
 			enemy_dead = enemy_max
-			
-		print(\"current wave:\")
-		print(wave_current)
 	
 	#enemy spawning
 	if spawn_count < 0: #spawn an enemy
@@ -86,13 +88,10 @@ func _process(delta):
 			#set the enemy color
 			if enemy_color == \"mixed\":
 				var i = randi()%2
-				print(i)
 				if i == 0:
 					enemy_instance.color = \"blue\"
-					print(\"blue\")
 				else:
 					enemy_instance.color = \"red\"
-					print(\"red\")
 			else:
 				enemy_instance.color = enemy_color
 			enemy_spawned += 1
@@ -107,7 +106,6 @@ func _process(delta):
 					var victory_instance = victory_preload.instance()
 					get_tree().get_root().get_node(\"World\").add_child(victory_instance)
 					victory = true
-					print(\"VICTORY\")
 
 "
 
@@ -138,7 +136,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Tower" parent="." index="1" instance=ExtResource( 1 )]
 
-position = Vector2( 315.569, 80.7669 )
+position = Vector2( 126.569, 89.2669 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Base" parent="." index="2" instance=ExtResource( 2 )]
@@ -157,14 +155,37 @@ position = Vector2( 98.4207, -0.108512 )
 curve = SubResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Label_Wave" type="Label" parent="." index="4"]
+[node name="Label_Villagers" type="Label" parent="." index="4"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 40.0
-margin_bottom = 14.0
+margin_left = 391.0
+margin_top = 156.0
+margin_right = 469.0
+margin_bottom = 170.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Villagers: 20"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label_Wave" type="Label" parent="." index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 13.0
+margin_top = 1.0
+margin_right = 79.0
+margin_bottom = 15.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -176,15 +197,16 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Label_Ressource" type="Label" parent="." index="5"]
+[node name="Label_Ressource" type="Label" parent="." index="6"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 79.0
-margin_right = 161.0
-margin_bottom = 14.0
+margin_left = 118.0
+margin_top = 1.0
+margin_right = 200.0
+margin_bottom = 15.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -196,8 +218,9 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="TowerSlots" type="Node2D" parent="." index="6"]
+[node name="TowerSlots" type="Node2D" parent="." index="7"]
 
+editor/display_folded = true
 scale = Vector2( 0.5, 0.5 )
 _sections_unfolded = [ "Transform" ]
 
@@ -213,7 +236,7 @@ scale = Vector2( 2, 2 )
 
 [node name="Slot24" parent="TowerSlots" index="2" instance=ExtResource( 4 )]
 
-position = Vector2( 814.002, 499 )
+position = Vector2( 819.002, 493 )
 scale = Vector2( 2, 2 )
 
 [node name="Slot25" parent="TowerSlots" index="3" instance=ExtResource( 4 )]
@@ -228,7 +251,7 @@ scale = Vector2( 2, 2 )
 
 [node name="Slot26" parent="TowerSlots" index="5" instance=ExtResource( 4 )]
 
-position = Vector2( 624.002, 534 )
+position = Vector2( 625.002, 527 )
 scale = Vector2( 2, 2 )
 
 [node name="Slot27" parent="TowerSlots" index="6" instance=ExtResource( 4 )]
@@ -238,7 +261,7 @@ scale = Vector2( 2, 2 )
 
 [node name="Slot2" parent="TowerSlots" index="7" instance=ExtResource( 4 )]
 
-position = Vector2( 239, 174 )
+position = Vector2( 562, 181 )
 scale = Vector2( 2, 2 )
 
 [node name="Slot4" parent="TowerSlots" index="8" instance=ExtResource( 4 )]
@@ -258,12 +281,12 @@ scale = Vector2( 2, 2 )
 
 [node name="Slot7" parent="TowerSlots" index="11" instance=ExtResource( 4 )]
 
-position = Vector2( 561, 190 )
+position = Vector2( 639, 171 )
 scale = Vector2( 2, 2 )
 
 [node name="Slot8" parent="TowerSlots" index="12" instance=ExtResource( 4 )]
 
-position = Vector2( 541, 312 )
+position = Vector2( 543, 309 )
 scale = Vector2( 2, 2 )
 
 [node name="Slot9" parent="TowerSlots" index="13" instance=ExtResource( 4 )]
@@ -283,7 +306,7 @@ scale = Vector2( 2, 2 )
 
 [node name="Slot12" parent="TowerSlots" index="16" instance=ExtResource( 4 )]
 
-position = Vector2( 444, 352 )
+position = Vector2( 442, 358 )
 scale = Vector2( 2, 2 )
 
 [node name="Slot13" parent="TowerSlots" index="17" instance=ExtResource( 4 )]

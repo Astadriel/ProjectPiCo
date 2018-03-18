@@ -14,17 +14,14 @@ var type = \"slime\"
 var color = \"blue\"
 var ini = true
 var ressource = 5
-var degen = 4 #for debug purposes
-
-# class member variables go here, for example:
-# var a = 2
-# var b = \"textvar\"
+var degen = 3.5 #for debug purposes
 
 func _ready():
 	pass
 
 func _process(delta):
 	hp -= degen*delta #for debug purposes
+	# monster attributes initialization
 	if ini == true:
 		get_node(\"Sp_slime_blue\").visible = false
 		if type == \"slime\":
@@ -36,17 +33,15 @@ func _process(delta):
 				print(\"no corresponding sprite\")
 		
 		ini = false
-	# Called every frame. Delta is time since last frame.
-	# movement along the path
+	# movement
 	set_offset(get_offset()+delta*speed)
 	
 	# Destroy if hp < 1
 	if hp < 1:
 		get_tree().get_root().get_node(\"World\").enemy_dead += 1
-		print(\"Enemy killed\")
-		print(get_tree().get_root().get_node(\"World\").enemy_dead )
 		#add ressource
 		get_tree().get_root().get_node(\"World\").ressource += ressource
+		#delete self
 		queue_free()
 	pass
 
@@ -59,29 +54,22 @@ script/source = "extends Area2D
 
 var color = \"blue\"
 var damage = 1
-# class member variables go here, for example:
-# var a = 2
-# var b = \"textvar\"
 
 #func _ready():
 #	pass
 
-func _process(delta):
-	
-	# Called every frame. Delta is time since last frame.
-	# Update game logic here.
-	pass
+#func _process(delta):
+#	pass
 	
 
 
 
 func _on_Area2D_area_entered(other):
-
-	
+	#interaction with the village
 	if other.is_in_group(\"base\"):
+		#remove villagers
 		other.hp -= damage
-		print(other.hp)
-	pass # replace with function body
+
 "
 
 [sub_resource type="RectangleShape2D" id=3]
