@@ -104,12 +104,6 @@ func _process(delta):
 			else:
 				enemy_instance.color = enemy_color
 			enemy_spawned += 1
-			if wave_current == wave_max:
-				if enemy_spawned == enemy_max:
-					enemy_instance.type = \"boss\"
-					enemy_instance.color = \"green\"
-					
-
 
 	#check for victory
 	if get_node(\"Base\").game_over == false:
@@ -138,7 +132,7 @@ _data = {
 }
 _sections_unfolded = [ "Resource" ]
 
-[node name="World" type="Node2D" index="0"]
+[node name="World" type="Node2D"]
 
 scale = Vector2( 2, 2 )
 script = SubResource( 1 )
@@ -402,7 +396,53 @@ scale = Vector2( 2, 2 )
 position = Vector2( 345.861, 167.317 )
 scale = Vector2( 2, 2 )
 
-[node name="Music_Main" type="AudioStreamPlayer" parent="." index="9"]
+[node name="How_To_Play" type="Button" parent="." index="9"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 431.0
+margin_top = 2.0
+margin_right = 510.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 4 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "HOW TO PLAY"
+flat = false
+align = 1
+_sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
+
+[node name="Panel" type="Panel" parent="How_To_Play" index="0"]
+
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -310.5
+margin_top = 33.0
+margin_right = -112.5
+margin_bottom = 249.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "custom_styles" ]
+
+[node name="Music_Main" type="AudioStreamPlayer" parent="." index="10"]
 
 stream = ExtResource( 6 )
 volume_db = 0.0
@@ -410,7 +450,7 @@ autoplay = true
 mix_target = 0
 bus = "Master"
 
-[node name="Music_Defeat" type="AudioStreamPlayer" parent="." index="10"]
+[node name="Music_Defeat" type="AudioStreamPlayer" parent="." index="11"]
 
 stream = ExtResource( 7 )
 volume_db = 0.0
@@ -418,7 +458,7 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="Music_Victory" type="AudioStreamPlayer" parent="." index="11"]
+[node name="Music_Victory" type="AudioStreamPlayer" parent="." index="12"]
 
 stream = ExtResource( 8 )
 volume_db = 0.0
