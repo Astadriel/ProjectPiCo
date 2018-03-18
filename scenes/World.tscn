@@ -14,7 +14,7 @@ const VICTORY_PATH = \"res://instances/Victory.tscn\"
 var spawn_delay = 1
 var spawn_count = spawn_delay
 var victory = false
-var wave_max = 10
+var wave_max = 2
 var wave_current = 0
 var enemy_spawned = 0
 var enemy_max = 0
@@ -124,7 +124,7 @@ _data = {
 }
 _sections_unfolded = [ "Resource" ]
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" index="0"]
 
 scale = Vector2( 2, 2 )
 script = SubResource( 1 )
