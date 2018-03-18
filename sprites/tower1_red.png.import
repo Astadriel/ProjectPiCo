@@ -7,10 +7,10 @@ path="res://.import/tower1_red.png-b1d933fdc2f1b891e3d820b064d86f75.stex"
 [deps]
 
 source_file="res://sprites/tower1_red.png"
-source_md5="17be8793b262927e11a2c45e79605c08"
+source_md5="e18eae5786d6a0645a1401b2f3b21faa"
 
 dest_files=[ "res://.import/tower1_red.png-b1d933fdc2f1b891e3d820b064d86f75.stex" ]
-dest_md5="9006445bc4443799c15f4197e6a12e26"
+dest_md5="14360db602aee57cea01d0240596091d"
 
 [params]
 
