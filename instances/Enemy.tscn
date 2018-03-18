@@ -68,7 +68,7 @@ func _on_Area2D_area_entered(other):
 	#interaction with the village
 	if other.is_in_group(\"base\"):
 		#remove villagers
-		other.hp -= damage
+		other.hp -= get_parent().damage
 
 "
 
@@ -77,7 +77,7 @@ func _on_Area2D_area_entered(other):
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[node name="Enemy" type="PathFollow2D" groups=[
+[node name="Enemy" type="PathFollow2D" index="0" groups=[
 "enemy",
 ]]
 
