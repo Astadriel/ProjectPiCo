@@ -7,7 +7,7 @@
 
 script/source = "extends Area2D
 
-var damage = 20
+var damage = 1
 var lifetime = 0.3
 var initialize = true
 var color = \"blue\"
