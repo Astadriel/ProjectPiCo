@@ -1,7 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://fonts/normal.tres" type="DynamicFont" id=1]
-
 [sub_resource type="StyleBoxFlat" id=1]
 
 content_margin_left = -1.0
@@ -34,12 +33,12 @@ anti_aliasing_size = 1
 
 script/source = "extends Panel
 
-var delay = 4
+var delay = 10
 
-#func _ready():
-#	# Called every time the node is added to the scene.
-#	# Initialization here
-#	pass
+func _ready():
+	get_tree().get_root().get_node(\"World\").get_node(\"Music_Main\").stop()
+	get_tree().get_root().get_node(\"World\").get_node(\"Music_Victory\").play(0)
+	pass
 
 func _process(delta):
 	delay -= delta
