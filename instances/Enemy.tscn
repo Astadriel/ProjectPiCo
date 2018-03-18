@@ -105,6 +105,8 @@ texture = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="." index="2"]
 
+position = Vector2( -1.30723, -4.57266 )
+scale = Vector2( 0.510576, 0.490356 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
