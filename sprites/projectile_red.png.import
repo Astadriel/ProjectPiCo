@@ -10,7 +10,7 @@ source_file="res://sprites/projectile_red.png"
 source_md5="8ebf1fd4e3d9916752db5220d8502825"
 
 dest_files=[ "res://.import/projectile_red.png-7adb6c4a11a50535c0dc62a38da69b35.stex" ]
-dest_md5="777333f51cc6d8cda845785f973d7a16"
+dest_md5="3817ac054ae8ed9a9b0d1589de15aeb2"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -28,5 +28,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
