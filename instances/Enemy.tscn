@@ -13,7 +13,7 @@ var damage = 1
 var type = \"slime\"
 var color = \"blue\"
 var ini = true
-var ressource = 5
+var ressource = 10
 var path_advance = 0
 
 
@@ -73,7 +73,6 @@ func _on_Area2D_area_entered(other):
 	if other.is_in_group(\"missile\"):
 		if other.color == get_parent().color:
 			get_parent().hp -= other.damage
-			print(get_parent().hp)
 			other.queue_free()
 
 

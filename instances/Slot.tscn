@@ -22,11 +22,12 @@ _sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
+position = Vector2( -0.214638, 7.08308 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 
-position = Vector2( -0.263519, -5.53392 )
+position = Vector2( 0.59504, 0.905251 )
 texture = ExtResource( 2 )
 
 [connection signal="input_event" from="." to="." method="_on_Slot_input_event"]
