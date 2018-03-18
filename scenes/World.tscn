@@ -88,6 +88,9 @@ func _process(delta):
 	#enemy spawning
 	if spawn_count < 0: #spawn an enemy
 		spawn_count = spawn_delay
+		if wave_current == wave_max:
+			if enemy_spawned == enemy_max-2:
+				spawn_count = 10*spawn_delay
 		if enemy_spawned < enemy_max:
 			var enemy_preload = preload(ENEMY_PATH)
 			var enemy_instance = enemy_preload.instance()
@@ -276,12 +279,12 @@ scale = Vector2( 2, 2 )
 
 [node name="Slot25" parent="TowerSlots" index="3" instance=ExtResource( 5 )]
 
-position = Vector2( 674.002, 86.0002 )
+position = Vector2( 677.685, 77.406 )
 scale = Vector2( 2, 2 )
 
 [node name="Slot" parent="TowerSlots" index="4" instance=ExtResource( 5 )]
 
-position = Vector2( 128.001, 424 )
+position = Vector2( 123.09, 416.634 )
 scale = Vector2( 2, 2 )
 
 [node name="Slot26" parent="TowerSlots" index="5" instance=ExtResource( 5 )]
@@ -291,7 +294,7 @@ scale = Vector2( 2, 2 )
 
 [node name="Slot27" parent="TowerSlots" index="6" instance=ExtResource( 5 )]
 
-position = Vector2( 295, 69.0002 )
+position = Vector2( 299.911, 55.4951 )
 scale = Vector2( 2, 2 )
 
 [node name="Slot2" parent="TowerSlots" index="7" instance=ExtResource( 5 )]
@@ -301,12 +304,12 @@ scale = Vector2( 2, 2 )
 
 [node name="Slot4" parent="TowerSlots" index="8" instance=ExtResource( 5 )]
 
-position = Vector2( 345, 432 )
+position = Vector2( 347.456, 425.861 )
 scale = Vector2( 2, 2 )
 
 [node name="Slot6" parent="TowerSlots" index="9" instance=ExtResource( 5 )]
 
-position = Vector2( 449, 244 )
+position = Vector2( 447.772, 229.267 )
 scale = Vector2( 2, 2 )
 
 [node name="Slot5" parent="TowerSlots" index="10" instance=ExtResource( 5 )]
@@ -316,7 +319,7 @@ scale = Vector2( 2, 2 )
 
 [node name="Slot7" parent="TowerSlots" index="11" instance=ExtResource( 5 )]
 
-position = Vector2( 639, 171 )
+position = Vector2( 639, 166.089 )
 scale = Vector2( 2, 2 )
 
 [node name="Slot8" parent="TowerSlots" index="12" instance=ExtResource( 5 )]
@@ -326,12 +329,12 @@ scale = Vector2( 2, 2 )
 
 [node name="Slot9" parent="TowerSlots" index="13" instance=ExtResource( 5 )]
 
-position = Vector2( 525, 432 )
+position = Vector2( 527.455, 427.089 )
 scale = Vector2( 2, 2 )
 
 [node name="Slot10" parent="TowerSlots" index="14" instance=ExtResource( 5 )]
 
-position = Vector2( 730.002, 430 )
+position = Vector2( 730.002, 422.634 )
 scale = Vector2( 2, 2 )
 
 [node name="Slot11" parent="TowerSlots" index="15" instance=ExtResource( 5 )]
@@ -356,12 +359,12 @@ scale = Vector2( 2, 2 )
 
 [node name="Slot15" parent="TowerSlots" index="19" instance=ExtResource( 5 )]
 
-position = Vector2( 733.002, 202 )
+position = Vector2( 739.141, 188.495 )
 scale = Vector2( 2, 2 )
 
 [node name="Slot16" parent="TowerSlots" index="20" instance=ExtResource( 5 )]
 
-position = Vector2( 625.002, 429 )
+position = Vector2( 625.002, 424.089 )
 scale = Vector2( 2, 2 )
 
 [node name="Slot17" parent="TowerSlots" index="21" instance=ExtResource( 5 )]
@@ -371,7 +374,7 @@ scale = Vector2( 2, 2 )
 
 [node name="Slot18" parent="TowerSlots" index="22" instance=ExtResource( 5 )]
 
-position = Vector2( 319.014, 562.434 )
+position = Vector2( 271.132, 513.324 )
 scale = Vector2( 2, 2 )
 
 [node name="Slot19" parent="TowerSlots" index="23" instance=ExtResource( 5 )]
@@ -386,12 +389,12 @@ scale = Vector2( 2, 2 )
 
 [node name="Slot21" parent="TowerSlots" index="25" instance=ExtResource( 5 )]
 
-position = Vector2( 651.002, 272 )
+position = Vector2( 647.002, 272 )
 scale = Vector2( 2, 2 )
 
 [node name="Slot3" parent="TowerSlots" index="26" instance=ExtResource( 5 )]
 
-position = Vector2( 352, 171 )
+position = Vector2( 345.861, 167.317 )
 scale = Vector2( 2, 2 )
 
 [node name="How_To_Play" type="Button" parent="." index="9"]
