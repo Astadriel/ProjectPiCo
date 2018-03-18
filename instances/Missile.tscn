@@ -11,8 +11,7 @@ var damage = 1
 var lifetime = 0.3
 var initialize = true
 var color = \"blue\"
-var speed = 100
-var velocity = Vector2(0,speed)
+var velocity = Vector2(0,0)
 
 #func _ready():
 #	pass

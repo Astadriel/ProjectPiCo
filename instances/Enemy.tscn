@@ -13,7 +13,7 @@ var damage = 1
 var type = \"slime\"
 var color = \"blue\"
 var ini = true
-var ressource = 5
+var ressource = 10
 var path_advance = 0
 
 
@@ -84,7 +84,7 @@ func _on_Area2D_area_entered(other):
 custom_solver_bias = 0.0
 radius = 10.0
 
-[node name="Enemy" type="PathFollow2D" index="0" groups=[
+[node name="Enemy" type="PathFollow2D" groups=[
 "enemy",
 ]]
 

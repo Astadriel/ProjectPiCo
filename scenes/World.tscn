@@ -23,6 +23,7 @@ var enemy_dead = 0
 var wave_initialize = true
 var enemy_color = \"blue\"
 var ressource = 100
+var tower_cost = 100
 
 
 func _ready():
@@ -123,7 +124,7 @@ _data = {
 }
 _sections_unfolded = [ "Resource" ]
 
-[node name="World" type="Node2D" index="0"]
+[node name="World" type="Node2D"]
 
 scale = Vector2( 2, 2 )
 script = SubResource( 1 )
@@ -137,7 +138,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Tower" parent="." index="1" instance=ExtResource( 1 )]
 
-position = Vector2( 113.791, 208.255 )
+position = Vector2( 127.291, 85.2549 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Base" parent="." index="2" instance=ExtResource( 2 )]
