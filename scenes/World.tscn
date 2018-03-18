@@ -48,7 +48,7 @@ func _process(delta):
 		enemy_spawned = 0
 		
 		if wave_current == 1:
-			enemy_max = 1
+			enemy_max = 5
 			enemy_color = \"blue\"
 		elif wave_current == 2:
 			enemy_max = 5
@@ -60,7 +60,7 @@ func _process(delta):
 			enemy_max = 15
 			enemy_color = \"blue\"
 		elif wave_current == 5:
-			enemy_max = 15
+			enemy_max = 20
 			enemy_color = \"red\"
 			spawn_delay = 0.5
 		elif wave_current == 6:

@@ -7,14 +7,13 @@
 
 script/source = "extends PathFollow2D
 
-var hp = 100
+var hp = 5
 var speed = 30
 var damage = 1
 var type = \"slime\"
 var color = \"blue\"
 var ini = true
 var ressource = 5
-var degen = 3.5 #for debug purposes
 var path_advance = 0
 
 
@@ -22,7 +21,6 @@ func _ready():
 	pass
 
 func _process(delta):
-	hp -= degen*delta #for debug purposes
 	# monster attributes initialization
 	if ini == true:
 		get_node(\"Sp_slime_blue\").visible = false
@@ -68,18 +66,23 @@ func _on_Area2D_area_entered(other):
 	#interaction with the village
 	if other.is_in_group(\"base\"):
 		#remove villagers
-
 		other.hp -= get_parent().damage
+		#optional: destroy itself
+		get_parent().queue_free()
+		get_tree().get_root().get_node(\"World\").enemy_dead += 1
 	if other.is_in_group(\"missile\"):
-		print(\"debug\")
+		if other.color == get_parent().color:
+			get_parent().hp -= other.damage
+			print(get_parent().hp)
+			other.queue_free()
 
 
 "
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=3]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+radius = 10.0
 
 [node name="Enemy" type="PathFollow2D" index="0" groups=[
 "enemy",
@@ -122,8 +125,8 @@ script = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 
-position = Vector2( 1.06016, 0.219633 )
-scale = Vector2( 2.13292, 2.09907 )
+position = Vector2( 1.9862, 0.727282 )
+scale = Vector2( 1.69761, 1.84615 )
 shape = SubResource( 3 )
 
 [connection signal="area_entered" from="Area2D" to="Area2D" method="_on_Area2D_area_entered"]

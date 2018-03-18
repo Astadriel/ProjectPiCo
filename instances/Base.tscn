@@ -53,8 +53,8 @@ script = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
-position = Vector2( -3.60265, -0.759645 )
-scale = Vector2( 2.95988, 2.90884 )
+position = Vector2( 13.3146, -0.759645 )
+scale = Vector2( 1.65855, 2.90884 )
 shape = SubResource( 2 )
 
 
