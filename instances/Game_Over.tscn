@@ -14,6 +14,11 @@ func _ready():
 	pass
 
 func _process(delta):
+	delay -= delta
+	if delay < 0:
+		get_tree().change_scene(\"res://scenes/Menu.tscn\")
+"
+
 [node name="Game_Over" type="Panel"]
 
 anchor_left = 0.0
@@ -31,6 +36,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_styles/panel = SubResource( 1 )
+script = SubResource( 2 )
 _sections_unfolded = [ "custom_styles" ]
 
 [node name="Label" type="Label" parent="." index="0"]
