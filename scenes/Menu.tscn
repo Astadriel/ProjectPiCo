@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://sprites/level1_bkgd.png" type="Texture" id=1]
 [ext_resource path="res://sprites/village.png" type="Texture" id=2]
 [ext_resource path="res://sprites/tower1_blue.png" type="Texture" id=3]
 [ext_resource path="res://sprites/tower1_red.png" type="Texture" id=4]
+[ext_resource path="res://fonts/normal.tres" type="DynamicFont" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -53,9 +54,6 @@ _sections_unfolded = [ "Transform" ]
 position = Vector2( 256, 150 )
 texture = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="village" type="Sprite" parent="Node2D" index="1"]
 
@@ -105,14 +103,14 @@ texture = ExtResource( 3 )
 
 [node name="MainMenu" type="Panel" parent="." index="1"]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 427.0
-margin_top = 228.0
-margin_right = 664.0
-margin_bottom = 349.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -119.0
+margin_top = -76.0
+margin_right = 118.0
+margin_bottom = 45.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -120,7 +118,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_styles/panel = SubResource( 1 )
-_sections_unfolded = [ "Theme", "custom_styles" ]
+_sections_unfolded = [ "Rect", "Theme", "custom_styles" ]
 
 [node name="Start" type="Button" parent="MainMenu" index="0"]
 
@@ -129,9 +127,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 62.0
-margin_top = 50.0
+margin_top = 66.0
 margin_right = 186.0
-margin_bottom = 82.0
+margin_bottom = 98.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -139,6 +137,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_fonts/font = ExtResource( 5 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -147,7 +146,31 @@ text = "Start"
 flat = false
 align = 1
 script = SubResource( 2 )
-_sections_unfolded = [ "Rect" ]
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+
+[node name="Label" type="Label" parent="MainMenu" index="1"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -60.5
+margin_top = -35.5
+margin_right = 68.5
+margin_bottom = -9.5
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 5 )
+text = "GAME TITLE"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
 
 [connection signal="pressed" from="MainMenu/Start" to="MainMenu/Start" method="_on_Start_pressed"]
 

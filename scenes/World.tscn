@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://instances/Tower.tscn" type="PackedScene" id=1]
 [ext_resource path="res://instances/Base.tscn" type="PackedScene" id=2]
 [ext_resource path="res://sprites/village.png" type="Texture" id=3]
-[ext_resource path="res://instances/Slot.tscn" type="PackedScene" id=4]
+[ext_resource path="res://fonts/small.tres" type="DynamicFont" id=4]
+[ext_resource path="res://instances/Slot.tscn" type="PackedScene" id=5]
 
 [sub_resource type="GDScript" id=1]
 
@@ -122,7 +123,7 @@ _data = {
 }
 _sections_unfolded = [ "Resource" ]
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" index="0"]
 
 scale = Vector2( 2, 2 )
 script = SubResource( 1 )
@@ -136,7 +137,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Tower" parent="." index="1" instance=ExtResource( 1 )]
 
-position = Vector2( 126.569, 89.2669 )
+position = Vector2( 113.791, 208.255 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Base" parent="." index="2" instance=ExtResource( 2 )]
@@ -163,18 +164,20 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 391.0
 margin_top = 156.0
-margin_right = 469.0
-margin_bottom = 170.0
+margin_right = 467.0
+margin_bottom = 175.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "Villagers: 20"
+custom_fonts/font = ExtResource( 4 )
+text = "Villagers 20"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Focus", "Mouse", "Rect", "Size Flags", "custom_fonts" ]
 
 [node name="Label_Wave" type="Label" parent="." index="5"]
 
@@ -184,14 +187,15 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 13.0
 margin_top = 1.0
-margin_right = 79.0
-margin_bottom = 15.0
+margin_right = 109.0
+margin_bottom = 30.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = ExtResource( 4 )
 text = "WAVE: 0/0"
 percent_visible = 1.0
 lines_skipped = 0
@@ -205,156 +209,157 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 118.0
 margin_top = 1.0
-margin_right = 200.0
-margin_bottom = 15.0
+margin_right = 250.0
+margin_bottom = 25.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = ExtResource( 4 )
 text = "Ressource: 0"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Size Flags", "custom_fonts", "custom_styles" ]
 
 [node name="TowerSlots" type="Node2D" parent="." index="7"]
 
-editor/display_folded = true
 scale = Vector2( 0.5, 0.5 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Slot22" parent="TowerSlots" index="0" instance=ExtResource( 4 )]
+[node name="Slot22" parent="TowerSlots" index="0" instance=ExtResource( 5 )]
 
 position = Vector2( 642.002, 362 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot23" parent="TowerSlots" index="1" instance=ExtResource( 4 )]
+[node name="Slot23" parent="TowerSlots" index="1" instance=ExtResource( 5 )]
 
 position = Vector2( 136.001, 124 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot24" parent="TowerSlots" index="2" instance=ExtResource( 4 )]
+[node name="Slot24" parent="TowerSlots" index="2" instance=ExtResource( 5 )]
 
 position = Vector2( 819.002, 493 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot25" parent="TowerSlots" index="3" instance=ExtResource( 4 )]
+[node name="Slot25" parent="TowerSlots" index="3" instance=ExtResource( 5 )]
 
 position = Vector2( 674.002, 86.0002 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot" parent="TowerSlots" index="4" instance=ExtResource( 4 )]
+[node name="Slot" parent="TowerSlots" index="4" instance=ExtResource( 5 )]
 
 position = Vector2( 128.001, 424 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot26" parent="TowerSlots" index="5" instance=ExtResource( 4 )]
+[node name="Slot26" parent="TowerSlots" index="5" instance=ExtResource( 5 )]
 
 position = Vector2( 625.002, 527 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot27" parent="TowerSlots" index="6" instance=ExtResource( 4 )]
+[node name="Slot27" parent="TowerSlots" index="6" instance=ExtResource( 5 )]
 
 position = Vector2( 295, 69.0002 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot2" parent="TowerSlots" index="7" instance=ExtResource( 4 )]
+[node name="Slot2" parent="TowerSlots" index="7" instance=ExtResource( 5 )]
 
 position = Vector2( 562, 181 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot4" parent="TowerSlots" index="8" instance=ExtResource( 4 )]
+[node name="Slot4" parent="TowerSlots" index="8" instance=ExtResource( 5 )]
 
 position = Vector2( 345, 432 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot6" parent="TowerSlots" index="9" instance=ExtResource( 4 )]
+[node name="Slot6" parent="TowerSlots" index="9" instance=ExtResource( 5 )]
 
 position = Vector2( 449, 244 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot5" parent="TowerSlots" index="10" instance=ExtResource( 4 )]
+[node name="Slot5" parent="TowerSlots" index="10" instance=ExtResource( 5 )]
 
 position = Vector2( 337, 290 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot7" parent="TowerSlots" index="11" instance=ExtResource( 4 )]
+[node name="Slot7" parent="TowerSlots" index="11" instance=ExtResource( 5 )]
 
 position = Vector2( 639, 171 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot8" parent="TowerSlots" index="12" instance=ExtResource( 4 )]
+[node name="Slot8" parent="TowerSlots" index="12" instance=ExtResource( 5 )]
 
 position = Vector2( 543, 309 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot9" parent="TowerSlots" index="13" instance=ExtResource( 4 )]
+[node name="Slot9" parent="TowerSlots" index="13" instance=ExtResource( 5 )]
 
 position = Vector2( 525, 432 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot10" parent="TowerSlots" index="14" instance=ExtResource( 4 )]
+[node name="Slot10" parent="TowerSlots" index="14" instance=ExtResource( 5 )]
 
 position = Vector2( 730.002, 430 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot11" parent="TowerSlots" index="15" instance=ExtResource( 4 )]
+[node name="Slot11" parent="TowerSlots" index="15" instance=ExtResource( 5 )]
 
 position = Vector2( 740.002, 307 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot12" parent="TowerSlots" index="16" instance=ExtResource( 4 )]
+[node name="Slot12" parent="TowerSlots" index="16" instance=ExtResource( 5 )]
 
 position = Vector2( 442, 358 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot13" parent="TowerSlots" index="17" instance=ExtResource( 4 )]
+[node name="Slot13" parent="TowerSlots" index="17" instance=ExtResource( 5 )]
 
 position = Vector2( 336, 361 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot14" parent="TowerSlots" index="18" instance=ExtResource( 4 )]
+[node name="Slot14" parent="TowerSlots" index="18" instance=ExtResource( 5 )]
 
 position = Vector2( 142.001, 291 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot15" parent="TowerSlots" index="19" instance=ExtResource( 4 )]
+[node name="Slot15" parent="TowerSlots" index="19" instance=ExtResource( 5 )]
 
 position = Vector2( 733.002, 202 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot16" parent="TowerSlots" index="20" instance=ExtResource( 4 )]
+[node name="Slot16" parent="TowerSlots" index="20" instance=ExtResource( 5 )]
 
 position = Vector2( 625.002, 429 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot17" parent="TowerSlots" index="21" instance=ExtResource( 4 )]
+[node name="Slot17" parent="TowerSlots" index="21" instance=ExtResource( 5 )]
 
 position = Vector2( 225, 371 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot18" parent="TowerSlots" index="22" instance=ExtResource( 4 )]
+[node name="Slot18" parent="TowerSlots" index="22" instance=ExtResource( 5 )]
 
-position = Vector2( 231, 484 )
+position = Vector2( 319.014, 562.434 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot19" parent="TowerSlots" index="23" instance=ExtResource( 4 )]
+[node name="Slot19" parent="TowerSlots" index="23" instance=ExtResource( 5 )]
 
 position = Vector2( 437, 513 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot20" parent="TowerSlots" index="24" instance=ExtResource( 4 )]
+[node name="Slot20" parent="TowerSlots" index="24" instance=ExtResource( 5 )]
 
 position = Vector2( 463, 131 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot21" parent="TowerSlots" index="25" instance=ExtResource( 4 )]
+[node name="Slot21" parent="TowerSlots" index="25" instance=ExtResource( 5 )]
 
 position = Vector2( 651.002, 272 )
 scale = Vector2( 2, 2 )
 
-[node name="Slot3" parent="TowerSlots" index="26" instance=ExtResource( 4 )]
+[node name="Slot3" parent="TowerSlots" index="26" instance=ExtResource( 5 )]
 
 position = Vector2( 352, 171 )
 scale = Vector2( 2, 2 )
