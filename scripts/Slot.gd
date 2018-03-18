@@ -21,5 +21,4 @@ func _on_Slot_input_event(viewport, event, shape_idx):
 			get_tree().get_root().get_node("World").add_child(tower_build_instance)
 			tower_build_instance.global_position.x = global_position.x 
 			tower_build_instance.global_position.y = global_position.y 
-			print(get_tree().get_root().get_node("World").tower_cost)
 			queue_free()

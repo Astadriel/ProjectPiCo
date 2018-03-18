@@ -73,7 +73,6 @@ func _on_Area2D_area_entered(other):
 	if other.is_in_group(\"missile\"):
 		if other.color == get_parent().color:
 			get_parent().hp -= other.damage
-			print(get_parent().hp)
 			other.queue_free()
 
 
@@ -84,7 +83,7 @@ func _on_Area2D_area_entered(other):
 custom_solver_bias = 0.0
 radius = 10.0
 
-[node name="Enemy" type="PathFollow2D" groups=[
+[node name="Enemy" type="PathFollow2D" index="0" groups=[
 "enemy",
 ]]
 
