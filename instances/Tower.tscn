@@ -52,8 +52,11 @@ func _process(delta):
 			missile_instance.global_position.y = global_position.y
 			missile_instance.color = color
 			
-			var missile_angle = get_angle_to(Vector2(target_pos_x-global_position.x,target_pos_y-global_position.y))
-			var norm_vector = Vector2(sin(missile_angle),cos(missile_angle))
+			var missile_angle = Vector2(global_position.x,global_position.y).angle_to_point(Vector2(target_pos_x,target_pos_y))
+
+			
+			var norm_vector = Vector2(cos(missile_angle),sin(missile_angle))
+			print(str(norm_vector.x,\" \",norm_vector.y))
 			missile_instance.velocity = (Vector2(norm_vector.x*missile_velocity,norm_vector.y*missile_velocity))
 			fire_count = fire_rate
 		else:
@@ -78,7 +81,7 @@ func _on_Tower_input_event(viewport, event, shape_idx):
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[node name="Tower" type="Area2D"]
+[node name="Tower" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )

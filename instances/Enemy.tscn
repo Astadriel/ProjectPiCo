@@ -8,7 +8,7 @@
 script/source = "extends PathFollow2D
 
 var hp = 100
-var speed = 50
+var speed = 20
 var damage = 1
 var type = \"slime\"
 var color = \"blue\"

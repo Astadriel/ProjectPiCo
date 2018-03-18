@@ -25,7 +25,6 @@ func _process(delta):
 		else:
 			get_node(\"Sp_missile_red\").visible = true
 		initialize = false
-		print(\"missile spawned\")
 		
 	
 	global_position.x += velocity.x * delta
@@ -33,7 +32,6 @@ func _process(delta):
 	
 	lifetime -= delta
 	if lifetime < 0 :
-		print(\"missile destroyed\")
 		queue_free()
 		pass
 
@@ -52,7 +50,7 @@ func _on_Missile_area_entered(other):
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[node name="Missile" type="Area2D" index="0"]
+[node name="Missile" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
