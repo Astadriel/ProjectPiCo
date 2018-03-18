@@ -7,10 +7,10 @@ path="res://.import/tower_spot.png-fddd29701adf1c666d4dde2a3eb337f0.stex"
 [deps]
 
 source_file="res://sprites/tower_spot.png"
-source_md5="9d79899b98cf23ac23fc2f0eb854edcd"
+source_md5="853904672cb2def76e225ff2ea5baf7e"
 
 dest_files=[ "res://.import/tower_spot.png-fddd29701adf1c666d4dde2a3eb337f0.stex" ]
-dest_md5="59db2b97af1a3f7ff66140076ab714c5"
+dest_md5="6f3456a1f8963fb275732eb096138eb9"
 
 [params]
 
