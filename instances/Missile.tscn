@@ -18,7 +18,7 @@ var velocity = Vector2(0,speed)
 #	pass
 
 func _process(delta):
-	get_node(\"Sp_missile_blue\").visible = false
+	
 	if initialize == true:
 		if color == \"blue\":
 			get_node(\"Sp_missile_blue\").visible = true
