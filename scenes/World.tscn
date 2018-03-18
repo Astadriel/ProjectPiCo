@@ -1,13 +1,14 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://instances/Tower.tscn" type="PackedScene" id=1]
 [ext_resource path="res://instances/Base.tscn" type="PackedScene" id=2]
 [ext_resource path="res://sprites/village.png" type="Texture" id=3]
 [ext_resource path="res://fonts/small.tres" type="DynamicFont" id=4]
 [ext_resource path="res://instances/Slot.tscn" type="PackedScene" id=5]
-[ext_resource path="res://music/main.ogg" type="AudioStream" id=6]
-[ext_resource path="res://music/defeat.ogg" type="AudioStream" id=7]
-[ext_resource path="res://music/victory.ogg" type="AudioStream" id=8]
+[ext_resource path="res://ressources/transparent_panel.tres" type="StyleBox" id=6]
+[ext_resource path="res://music/main.ogg" type="AudioStream" id=7]
+[ext_resource path="res://music/defeat.ogg" type="AudioStream" id=8]
+[ext_resource path="res://music/victory.ogg" type="AudioStream" id=9]
 
 [sub_resource type="GDScript" id=1]
 
@@ -129,7 +130,7 @@ _data = {
 }
 _sections_unfolded = [ "Resource" ]
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" index="0"]
 
 scale = Vector2( 2, 2 )
 script = SubResource( 1 )
@@ -422,26 +423,50 @@ _sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts", "cus
 
 [node name="Panel" type="Panel" parent="How_To_Play" index="0"]
 
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -310.5
-margin_top = 33.0
-margin_right = -112.5
-margin_bottom = 249.0
+margin_left = -435.5
+margin_top = 34.0
+margin_right = 4.5
+margin_bottom = 250.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_styles/panel = ExtResource( 6 )
 _sections_unfolded = [ "custom_styles" ]
+
+[node name="Label" type="Label" parent="How_To_Play/Panel" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_top = 12.0
+margin_right = 380.0
+margin_bottom = 150.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 4 )
+text = "Click on a tower to switch the tower color:
+Red towers fire on red monsters, and blue towers fire on blue monsters."
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
 
 [node name="Music_Main" type="AudioStreamPlayer" parent="." index="10"]
 
-stream = ExtResource( 6 )
+stream = ExtResource( 7 )
 volume_db = 0.0
 autoplay = true
 mix_target = 0
@@ -449,7 +474,7 @@ bus = "Master"
 
 [node name="Music_Defeat" type="AudioStreamPlayer" parent="." index="11"]
 
-stream = ExtResource( 7 )
+stream = ExtResource( 8 )
 volume_db = 0.0
 autoplay = false
 mix_target = 0
@@ -457,7 +482,7 @@ bus = "Master"
 
 [node name="Music_Victory" type="AudioStreamPlayer" parent="." index="12"]
 
-stream = ExtResource( 8 )
+stream = ExtResource( 9 )
 volume_db = 0.0
 autoplay = false
 mix_target = 0

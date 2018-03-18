@@ -19,7 +19,7 @@ func _process(delta):
 		get_tree().change_scene(\"res://scenes/Menu.tscn\")
 "
 
-[node name="Game_Over" type="Panel" index="0"]
+[node name="Game_Over" type="Panel"]
 
 anchor_left = 0.0
 anchor_top = 0.0
