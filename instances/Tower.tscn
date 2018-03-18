@@ -17,45 +17,66 @@ var missile_velocity = 500
 #	pass
 
 func _process(delta):
+	
 	fire_count -= delta
+	
 	if fire_count < 0:
+		
 		#find a target
 		var target = false
 		var target_pos_x = -1
 		var target_pos_y = -1
 		var enemy_offset = -1
+		
 		#scans all enemies
 		for child in get_tree().get_root().get_node(\"World\").get_node(\"Path_Enemy\").get_children():
+			
 			if child.is_in_group(\"enemy\"):
+				
 				#select based on color (racism is bad !!!)
 				if child.color == color:
+					
 					#selection based on hp ...
 					if child.hp > 0:
+						
 						#distance function not found T_T
 						var distance = sqrt(pow(child.global_position.x - global_position.x,2) + pow(child.global_position.y - global_position.y,2))
 						#range check
+						
 						if distance < fire_range:
+							
 							#select the most advanced on the path
 							if child.path_advance > enemy_offset:
+								
 								enemy_offset = child.path_advance
 								#save the position of the most advanced on the path
 								target_pos_x = child.global_position.x
 								target_pos_y = child.global_position.y
 								target = true
 								print(\"in range!\")
+								
 		if target == true:
+			
 			#projectile generation
 			var missile_preload = preload(MISSILE_PATH)
 			var missile_instance = missile_preload.instance()
+			
 			get_tree().get_root().get_node(\"World\").add_child(missile_instance)
+			
 			missile_instance.global_position.x = global_position.x
 			missile_instance.global_position.y = global_position.y
 			missile_instance.color = color
 			
-			var missile_angle = get_angle_to(Vector2(target_pos_x-global_position.x,target_pos_y-global_position.y))
-			var norm_vector = Vector2(sin(missile_angle),cos(missile_angle))
-			missile_instance.velocity = (Vector2(norm_vector.x*missile_velocity,norm_vector.y*missile_velocity))
+			#var missile_angle = get_angle_to(Vector2(target_pos_x-global_position.x,target_pos_y-global_position.y))
+			#Vector2(global_position.x, global_position.y).angle_to_point(Vector2(target_pos_x-global_position.x,target_pos_y-global_position.y))
+			#var norm_vector = Vector2(sin(missile_angle),cos(missile_angle))
+			#missile_instance.velocity = (Vector2(norm_vector.x*missile_velocity,norm_vector.y*missile_velocity))
+			
+			var dir = Vector2(target_pos_x-global_position.x,target_pos_y-global_position.y).normalized()
+			missile_instance.velocity = dir * missile_velocity
+			
 			fire_count = fire_rate
+			
 		else:
 			fire_count = fire_rate/4 #re-check faster
 			
@@ -78,7 +99,7 @@ func _on_Tower_input_event(viewport, event, shape_idx):
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[node name="Tower" type="Area2D"]
+[node name="Tower" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
