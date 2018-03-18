@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://sprites/level1_bkgd.png" type="Texture" id=1]
 [ext_resource path="res://sprites/village.png" type="Texture" id=2]
 [ext_resource path="res://sprites/tower1_blue.png" type="Texture" id=3]
 [ext_resource path="res://sprites/tower1_red.png" type="Texture" id=4]
 [ext_resource path="res://fonts/normal.tres" type="DynamicFont" id=5]
+[ext_resource path="res://music/intro.ogg" type="AudioStream" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -171,6 +172,14 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="2"]
+
+stream = ExtResource( 6 )
+volume_db = 0.0
+autoplay = true
+mix_target = 0
+bus = "Master"
 
 [connection signal="pressed" from="MainMenu/Start" to="MainMenu/Start" method="_on_Start_pressed"]
 

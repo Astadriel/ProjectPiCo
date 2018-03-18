@@ -138,19 +138,19 @@ texture = ExtResource( 2 )
 [node name="Sp_boss_green" type="Sprite" parent="." index="2"]
 
 visible = false
-position = Vector2( -0.774841, -3.68051 )
+position = Vector2( -0.774841, -10.2667 )
 texture = ExtResource( 3 )
 
 [node name="Sp_boss_blue" type="Sprite" parent="." index="3"]
 
 visible = false
-position = Vector2( -0.774849, -3.29309 )
+position = Vector2( -0.774849, -10.2667 )
 texture = ExtResource( 4 )
 
 [node name="Sp_boss_red" type="Sprite" parent="." index="4"]
 
 visible = false
-position = Vector2( -1.16227, -3.4868 )
+position = Vector2( -0.581139, -10.2667 )
 texture = ExtResource( 5 )
 
 [node name="Area2D" type="Area2D" parent="." index="5"]
