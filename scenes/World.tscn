@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://instances/Tower.tscn" type="PackedScene" id=1]
 [ext_resource path="res://instances/Base.tscn" type="PackedScene" id=2]
 [ext_resource path="res://sprites/village.png" type="Texture" id=3]
 [ext_resource path="res://fonts/small.tres" type="DynamicFont" id=4]
 [ext_resource path="res://instances/Slot.tscn" type="PackedScene" id=5]
+[ext_resource path="res://music/main.ogg" type="AudioStream" id=6]
+[ext_resource path="res://music/defeat.ogg" type="AudioStream" id=7]
+[ext_resource path="res://music/victory.ogg" type="AudioStream" id=8]
 
 [sub_resource type="GDScript" id=1]
 
@@ -15,7 +18,7 @@ const VICTORY_PATH = \"res://instances/Victory.tscn\"
 var spawn_delay = 1
 var spawn_count = spawn_delay
 var victory = false
-var wave_max = 1
+var wave_max = 10
 var wave_current = 0
 var enemy_spawned = 0
 var enemy_max = 0
@@ -111,10 +114,11 @@ func _process(delta):
 		if wave_current == wave_max:
 			if enemy_dead == enemy_max:
 				if victory == false:
-					var victory_preload = preload(VICTORY_PATH)
-					var victory_instance = victory_preload.instance()
-					get_tree().get_root().get_node(\"World\").add_child(victory_instance)
-					victory = true
+					if get_tree().get_root().get_node(\"World\").get_node(\"Base\").hp > 0:
+						var victory_preload = preload(VICTORY_PATH)
+						var victory_instance = victory_preload.instance()
+						get_tree().get_root().get_node(\"World\").add_child(victory_instance)
+						victory = true
 
 "
 
@@ -131,7 +135,7 @@ _data = {
 }
 _sections_unfolded = [ "Resource" ]
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" index="0"]
 
 scale = Vector2( 2, 2 )
 script = SubResource( 1 )
@@ -393,5 +397,29 @@ scale = Vector2( 2, 2 )
 
 position = Vector2( 352, 171 )
 scale = Vector2( 2, 2 )
+
+[node name="Music_Main" type="AudioStreamPlayer" parent="." index="9"]
+
+stream = ExtResource( 6 )
+volume_db = 0.0
+autoplay = true
+mix_target = 0
+bus = "Master"
+
+[node name="Music_Defeat" type="AudioStreamPlayer" parent="." index="10"]
+
+stream = ExtResource( 7 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Music_Victory" type="AudioStreamPlayer" parent="." index="11"]
+
+stream = ExtResource( 8 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -28,16 +28,16 @@ shadow_size = 0
 anti_aliasing = true
 anti_aliasing_size = 1
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="GDScript" id=2]
 
 script/source = "extends Panel
 
-var delay = 4
+var delay = 10
 
-#func _ready():
-#	# Called every time the node is added to the scene.
-#	# Initialization here
-#	pass
+func _ready():
+	get_tree().get_root().get_node(\"World\").get_node(\"Music_Main\").stop()
+	get_tree().get_root().get_node(\"World\").get_node(\"Music_Victory\").play(0)
+	pass
 
 func _process(delta):
 	delay -= delta
@@ -60,8 +60,8 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/panel = SubResource( 2 )
-script = SubResource( 1 )
+custom_styles/panel = SubResource( 1 )
+script = SubResource( 2 )
 _sections_unfolded = [ "custom_styles" ]
 
 [node name="Label" type="Label" parent="." index="0"]

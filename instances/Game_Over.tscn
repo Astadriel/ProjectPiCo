@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -28,6 +28,22 @@ shadow_size = 0
 anti_aliasing = true
 anti_aliasing_size = 1
 
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends Panel
+var delay = 3
+
+func _ready():
+	get_tree().get_root().get_node(\"World\").get_node(\"Music_Main\").stop()
+	get_tree().get_root().get_node(\"World\").get_node(\"Music_Defeat\").play(0)
+	pass
+
+func _process(delta):
+	delay -= delta
+	if delay < 0:
+		get_tree().change_scene(\"res://scenes/Menu.tscn\")
+"
+
 [node name="Game_Over" type="Panel"]
 
 anchor_left = 0.0
@@ -45,6 +61,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_styles/panel = SubResource( 1 )
+script = SubResource( 2 )
 _sections_unfolded = [ "custom_styles" ]
 
 [node name="Label" type="Label" parent="." index="0"]
